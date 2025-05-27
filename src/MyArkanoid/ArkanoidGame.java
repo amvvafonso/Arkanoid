@@ -28,7 +28,7 @@ public class ArkanoidGame extends JComponent
     ArrayList<Brick> bricks;
     Paddle pad;
     Boolean running;
-
+    List<Brick> BricksToRemove;
 
     Timer timer;
     
@@ -47,7 +47,7 @@ public class ArkanoidGame extends JComponent
         //dimensoes dos blocos
         int dimX = getWidth() / txt.get(0).length();
         int dimY = getHeight() / txt.size();
-        
+        BricksToRemove = new ArrayList<>();
         bricks = new ArrayList<>();
         for (int y = 0; y < txt.size(); y++) {
             for (int x = 0; x < txt.get(y).length(); x++) {
@@ -61,9 +61,9 @@ public class ArkanoidGame extends JComponent
             }
         }
         this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
-        this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 20);
-        this.ball.vx = 2;
-        this.ball.vy = -2;
+        this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 10);
+        this.ball.vx = 1;
+        this.ball.vy = -1;
     }
     
     
@@ -90,13 +90,14 @@ public class ArkanoidGame extends JComponent
         timer.start();
         running = true;
         try {
-            imgBack = ImageUtils.loadImage("/multimedia/images/background1.png");
+            imgBack = ImageUtils.loadImage("/Resources/background.png");
             //imgBack = ImageUtils.changeTransparency(imgBack, 0.3f);
         } catch (IOException ex) {
             Logger.getLogger(ArkanoidGame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         addMouseMotionListener(this);
+
     }
 
     public void start() {
@@ -136,8 +137,49 @@ public class ArkanoidGame extends JComponent
 
             for (Brick brick : bricks) {
                 if (brick.intersects(ball) && brick.isVisible) {
-                    SoundUtils.playSound("pop");
-                    brick.isVisible = false;
+                    if (brick.getMyColor().equals(Color.GRAY)) {
+                        if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5){
+                            ball.vx *= -1;
+                        }
+                        else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5) ){
+                            ball.vx *= -1;
+                        }
+                        else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width -5){
+                            ball.vy *= -1;
+                        }
+                        else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width -5){
+                            ball.vy *= -1;
+                        } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
+                            ball.vy *= -1;
+                            ball.vx *= -1;
+                        }
+                        else if (/* Canto */ ball.x == brick.x && ball.x == brick.x + brick.width - 5) {
+                            ball.vy *= -1;
+                            ball.vx *= -1;
+                        }
+                    }
+                    else {
+
+                        checkIfWin(brick);
+                        SoundUtils.playSound("pop");
+                        brick.isVisible = false;
+
+                        if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
+                            ball.vx *= -1;
+                        } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
+                            ball.vx *= -1;
+                        } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
+                            ball.vy *= -1;
+                        } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
+                            ball.vy *= -1;
+                        } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
+                            ball.vy *= -1;
+                            ball.vx *= -1;
+                        } else if (/* Canto */ ball.x == brick.x && ball.x == brick.x + brick.width - 5) {
+                            ball.vy *= -1;
+                            ball.vx *= -1;
+                        }
+                    }
                 }
 
             }
@@ -147,11 +189,26 @@ public class ArkanoidGame extends JComponent
         } catch (ArkanoidException ex) {
             if (this.isDisplayable()) {
                 SoundUtils.playSound("sound");
-                ex.show();
+                ex.showError();
                 timer.stop();
             }
         }
 
+    }
+
+    public void checkIfWin(Brick brick){
+        try {
+            BricksToRemove.add(brick);
+            if (BricksToRemove.size() == bricks.size()){
+                if (this.isDisplayable()){
+                timer.stop();
+                new ArkanoidException("Ganhou").showMessage();
+                }
+            }
+        }
+        catch (Exception es){
+            System.out.println(es.toString());
+        }
     }
 
     @Override

@@ -3,8 +3,6 @@ package MyArkanoid;
 import utils.FileUtils;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +15,7 @@ public class playGame extends JFrame {
     public playGame() {
         try {
             initComponents();
-            arkanoidGame1.loadLevel(FileUtils.createFile("puzzle.txt"));
+            arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
 
 
     } catch (IOException ex) {
@@ -63,6 +61,7 @@ public class playGame extends JFrame {
             }
         });
 
+        this.setResizable(false);
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -1,33 +1,33 @@
 package utils;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import MyArkanoid.ArkanoidException;
+
+import java.io.*;
+import java.util.Scanner;
 
 public class FileUtils {
-    public static String createFile(String name){
+    public static String createPuzzle(String name){
         try {
             File file = new File(name);
+
             if (!file.exists()){
                 file.createNewFile();
                 FileWriter fw = new FileWriter(file);
-                fw.append(" ###%####\n" +
-                        "  ##%###\n" +
-                        "   ####\n" +
-                        "    ##\n" +
-                        "          \n" +
-                        "          \n" +
-                        "          ");
+                fw.append(LevelUtils.createRandomLevel());
                 fw.close();
                 return name;
             }
+            else {
+                return name;
+            }
         }
-        catch (IOException e){
+        catch (IOException | ArkanoidException e){
             e.printStackTrace();
             return "";
         }
-        return "";
     }
+
+
 
     public static boolean deleteFile(String name){
         try {
