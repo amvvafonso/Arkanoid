@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Arkanoid-27502_23875.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Credits.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/AnimatedImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/Animation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/Brick.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/NewJFrame.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/NewJFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/Paddle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/arkanoid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/mugshot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/ok.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/background1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/background2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/background3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/background4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/background5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/paddle0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/paddle1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/paddle2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/pop-gray.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/pop.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/sound.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/ImageUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2xguFMVpfOJdVWCzhxPvVuB58r4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/amvv/Documents/Java/Arkanoid-27502_23875/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="" />
+      <created>1748371932457</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748371932457</updated>
+      <workItem from="1748371933451" duration="302000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
