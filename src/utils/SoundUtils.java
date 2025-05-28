@@ -5,6 +5,7 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * Created on 06/05/2024, 17:52:06
@@ -73,5 +74,26 @@ public class SoundUtils {
         catch (Exception es){
             System.out.println(es);
         }
+    }
+
+    public /*String*/ ArrayList<String> Soundtrack_list(/*int ii*/){
+
+        String folder_path_name = "por_definir";
+        File soundtrack_folder = new File(folder_path_name);
+        String music_track_checker = "soundtrack";
+        File[] sound_files_list = soundtrack_folder.listFiles();//lista de ficheiros no folder
+        ArrayList<String> soundtrack_files_list = new ArrayList<String>();
+        //diferenciar ficheiros para usar na soundtrack
+        for (File file : sound_files_list) {
+            if (file.getName().contains(music_track_checker)) {
+                soundtrack_files_list.add("/por_definir/"+file.getName());
+            }
+        }
+        //assert files != null;
+       /* while(i<background_img_files_list.size()){
+        System.out.println("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ background_img_files_list.get(i));i++;}
+    */
+        //return background_img_files_list.get(ii);
+        return soundtrack_files_list;
     }
 }

@@ -23,12 +23,10 @@ public class ArkanoidGame extends JComponent
         implements ActionListener, MouseMotionListener {
 
     private BufferedImage imgBack = null;
-    private BufferedImage imgBack1 = null;
-    private BufferedImage imgBack2 = null;
     private int img_number=0;
     private ArrayList<String> passover= ImageUtils.Background_img_list();
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
-    private boolean check_wich_img_we_are_on = true;
+
 
 
     public BufferedImage backimage_recreation(int img_number) {
@@ -103,11 +101,10 @@ public class ArkanoidGame extends JComponent
     }
     public void image_fade() {
         //imgBack1 = ImageUtils.loadImage("/images/background1.png");
-        // Preload all images
         for (String path : passover) {
             try {
                 imgBack_list.add(ImageUtils.loadImage(path));
-            } catch (IOException e) {}
+            } catch (IOException _) {}
         }
         imgBack = imgBack_list.get(img_number);
         new Timer(2000, e -> {
