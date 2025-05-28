@@ -38,7 +38,7 @@ public class SoundUtils {
 
 
 
-    public static void playSound(String name){
+    public static Clip playSound(String name){
         try {
             InputStream url = SoundUtils.class.getResourceAsStream("/sound/" + name + ".wav");
 
@@ -54,10 +54,12 @@ public class SoundUtils {
                 clip.stop();
             }
             clip.start();
+            return clip;
         }
         catch (Exception es){
             System.out.println(es);
         }
+        return null;
     }
 
 

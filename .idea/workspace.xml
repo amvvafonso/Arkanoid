@@ -9,29 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Responsive play aerea according to how many blocks are there&#10;some bug fixes">
-      <change afterPath="$PROJECT_DIR$/src/resources/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/pausa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/restart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/click.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/game-over.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/game-start.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/music.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Arkanoid_27502_23875_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Arkanoid_27502_23875_jar.xml" afterDir="false" />
+    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Add soundeffects, music&#10;fixed paths&#10;add some buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arkanoid-27502_23875.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid-27502_23875.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Credits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Paddle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/arkanoid.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/arkanoid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/mugshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/mugshot.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/ok.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/ok.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748371932457</updated>
       <workItem from="1748371933451" duration="2350000" />
-      <workItem from="1748374294342" duration="40306000" />
+      <workItem from="1748374294342" duration="43893000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -148,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748431235093</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add soundeffects, music&#10;fixed paths&#10;add some buttons">
+      <option name="closed" value="true" />
+      <created>1748443628062</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748443628062</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +148,7 @@
     <MESSAGE value="Some fixes" />
     <MESSAGE value="Responsive pause button" />
     <MESSAGE value="Responsive play aerea according to how many blocks are there&#10;some bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Responsive play aerea according to how many blocks are there&#10;some bug fixes" />
+    <MESSAGE value="Add soundeffects, music&#10;fixed paths&#10;add some buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add soundeffects, music&#10;fixed paths&#10;add some buttons" />
   </component>
 </project>
