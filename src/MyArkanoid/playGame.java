@@ -3,6 +3,7 @@ package MyArkanoid;
 import utils.FileUtils;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,7 +55,7 @@ public class playGame extends JFrame {
             }
         });
 
-        btPause.setText("Pause");
+        btPause.setText(this.arkanoidGame1.running ? "Pause" : "Resume");
         btPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPauseActionPerformed(evt);
@@ -71,8 +72,8 @@ public class playGame extends JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addComponent(btSave)
-                    .addComponent(btLoad))
-                    .addComponent(btPause)
+                    .addComponent(btLoad)
+                    .addComponent(btPause))
                 .addGap(18, 18, 18)
                 .addComponent(arkanoidGame1, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
 
@@ -83,13 +84,12 @@ public class playGame extends JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(btSave)
                 .addGap(29, 29, 29)
-                .addComponent(btLoad)
-                    .addGap(29, 29, 29)
-                    .addComponent(btPause)
+                .addComponent(btLoad).addGap(250,250,250).addComponent(btPause)
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 6, Short.MAX_VALUE)
                 .addComponent(arkanoidGame1, GroupLayout.PREFERRED_SIZE, 432, GroupLayout.PREFERRED_SIZE))
+
         );
 
         pack();
@@ -99,9 +99,13 @@ public class playGame extends JFrame {
         try {
             if (arkanoidGame1.timer.isRunning()){
                 arkanoidGame1.timer.stop();
+                arkanoidGame1.running = false;
+                this.btPause.setText("Resume");
                 return;
             }
             arkanoidGame1.timer.start();
+            arkanoidGame1.running = true;
+            this.btPause.setText("Pause");
         }
         catch (Exception ex) {
             Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);

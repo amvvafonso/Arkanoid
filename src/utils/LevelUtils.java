@@ -13,17 +13,20 @@ public class LevelUtils {
             String randomLevel = "";
             Random rand = new Random();
 
-            for (int y = 0; y < 10; y++) {
-                for (int x = 0; x < 10; x++) {
-                    if (y > 5){
+            int linhas = 8;
+            int colunas = 8;
+
+            for (int y = 0; y < linhas; y++) {
+                for (int x = 0; x < colunas; x++) {
+                    if (y > colunas - (colunas * 0.4)){
                         randomLevel += " ";
                         continue;
                     }
-                    int value = rand.nextInt(10);
-                    if (value < 3){
+                    int value = rand.nextInt(12);
+                    if (value < 2){
                         randomLevel += " ";
                     }
-                    else if (value > 3){
+                    else if (value > 3 && value < 9){
                         randomLevel += "#";
                     }
                     else if (value == 3){

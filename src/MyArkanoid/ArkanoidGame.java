@@ -4,6 +4,7 @@ package MyArkanoid;
 import utils.ImageUtils;
 import utils.SoundUtils;
 
+import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,7 +35,7 @@ public class ArkanoidGame extends JComponent
     List<Brick> BricksToRemove;
     Boolean used = false;
     Timer timer;
-    
+    int counter = 0;
     
     public void saveGame(String path) throws Exception{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path));
@@ -60,13 +61,14 @@ public class ArkanoidGame extends JComponent
                 else if (txt.get(y).charAt(x) == '%'){
                     bricks.add( new Brick(Color.GRAY, x*dimX,y * dimY, dimX, dimY));
                 }
+
                 
             }
         }
         this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
         this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 10);
         this.ball.vx = 1;
-        this.ball.vy = -1;
+        this.ball.vy = new Random().nextInt(-2,-1);
     }
     
     
@@ -81,9 +83,11 @@ public class ArkanoidGame extends JComponent
     
     
     public void stopGame(){
+        running = false;
         timer.stop();
     }
     public void continueGame(){
+        running = true;
         timer.start();
     }
 
@@ -100,7 +104,8 @@ public class ArkanoidGame extends JComponent
         }
 
         addMouseMotionListener(this);
-
+        timer.stop();
+        running = false;
     }
 
     public void start() {
@@ -140,12 +145,16 @@ public class ArkanoidGame extends JComponent
     public void actionPerformed(ActionEvent e) {
 
         try {
-
+                counter = 0;
+                for (Brick brick : bricks) {
+                    if (brick.getMyColor() == Color.RED) {
+                        counter++;
+                    }
+                }
                 ball.move(this.getBounds());
                 for (Brick brick : bricks) {
                     if (brick.intersects(ball) && brick.isVisible) {
                         if (brick.getMyColor().equals(Color.GRAY)) {
-                            SoundUtils.playSound("pop_gray");
 
                             if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
                                 ball.vx *= -1;
@@ -162,8 +171,30 @@ public class ArkanoidGame extends JComponent
                                 ball.vy *= -1;
                                 ball.vx *= -1;
                             }
-                            int effect = new Random().nextInt(1,7);
 
+                        } else if (brick.getMyColor() == Color.RED) {
+
+                            checkIfWin(brick);
+                            SoundUtils.playSound("pop");
+                            brick.isVisible = false;
+
+                            if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
+                                ball.vx *= -1;
+                            } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
+                                ball.vx *= -1;
+                            } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
+                                ball.vy *= -1;
+                            } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
+                                ball.vy *= -1;
+                            } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
+                                ball.vy *= -1;
+                                ball.vx *= -1;
+                            } else if (/* Canto */ ball.x == brick.x && ball.x == brick.x + brick.width - 5) {
+                                ball.vy *= -1;
+                                ball.vx *= -1;
+                            }
+                        } else if (brick.getMyColor() == Color.yellow) {
+                            int effect = new Random().nextInt(1, 5);
 
 
                             if (effect == 3 && !used) {
@@ -192,48 +223,24 @@ public class ArkanoidGame extends JComponent
                                     if (initVX1 < 0) ball.vy -= 1;
 
                                 }).start();
-                                used= false;
+                                used = false;
                             }
-                            else if (effect == 4) {
+                            else if (effect == 4 && !used) {
                                 new Thread(() -> {
                                     try {
-                                        Thread.sleep(new Random().nextInt(1000,5000));
+                                        Thread.sleep(new Random().nextInt(1000, 5000));
                                     } catch (InterruptedException ex) {
                                         throw new RuntimeException(ex);
                                     }
                                     this.ball.vx *= -1;
                                     this.ball.vy *= -1;
                                 }).start();
-
-                            }
-
-
-                        } else {
-
-                            checkIfWin(brick);
-                            SoundUtils.playSound("pop");
-                            brick.isVisible = false;
-
-                            if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
-                                ball.vx *= -1;
-                            } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
-                                ball.vx *= -1;
-                            } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
-                                ball.vy *= -1;
-                            } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
-                                ball.vy *= -1;
-                            } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
-                                ball.vy *= -1;
-                                ball.vx *= -1;
-                            } else if (/* Canto */ ball.x == brick.x && ball.x == brick.x + brick.width - 5) {
-                                ball.vy *= -1;
-                                ball.vx *= -1;
+                                used = false;
                             }
                         }
+
                     }
-
                 }
-
 
             pad.collide(ball);
 
@@ -252,7 +259,7 @@ public class ArkanoidGame extends JComponent
     public void checkIfWin(Brick brick){
         try {
             BricksToRemove.add(brick);
-            if (BricksToRemove.size() == bricks.size()){
+            if (BricksToRemove.size() == counter){
                 if (this.isDisplayable()){
                 timer.stop();
                 new ArkanoidException("Ganhou").showMessage();
