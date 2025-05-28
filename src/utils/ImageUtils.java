@@ -24,7 +24,7 @@ import java.awt.image.ColorConvertOp;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Random;
-
+import java.io.File;
 /**
  * Created on 06/05/2024, 16:34:46
  *
@@ -135,4 +135,17 @@ public class ImageUtils {
         Color[] colors = new Color[]{Color.RED, Color.BLUE, Color.GRAY};
         return colors[new Random().nextInt(colors.length)];
     }
+    /*
+    public static void Background_img_list(int img_number){
+        String folder_path_name="src/images";
+       File background_image_folder=new File(folder_path_name);
+       String img_name_checker="/background.*";
+        img_name_checker=     ""+folder_path_name+""+img_name_checker;
+       // File[] files=background_image_folder.listFiles();
+       if(img_name_checker){
+    // files=background_image_folder.listFiles();}
+
+        assert files != null;
+        System.out.println("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"+files.length);
+    }*/
 }
