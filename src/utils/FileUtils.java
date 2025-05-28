@@ -8,18 +8,18 @@ import java.util.Scanner;
 public class FileUtils {
     public static String createPuzzle(String name){
         try {
-            File file = new File(name);
+            File file = new File(name );
 
-            if (!file.exists()){
-                file.createNewFile();
-                FileWriter fw = new FileWriter(file);
-                fw.append(LevelUtils.createRandomLevel());
-                fw.close();
-                return name;
+            if (file.exists()){
+                FileUtils.deleteFile(name);
             }
-            else {
-                return name;
-            }
+
+            file.createNewFile();
+            FileWriter fw = new FileWriter(file);
+            fw.append(LevelUtils.createRandomLevel());
+            fw.close();
+            return name;
+
         }
         catch (IOException | ArkanoidException e){
             e.printStackTrace();

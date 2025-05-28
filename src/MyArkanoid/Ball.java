@@ -23,7 +23,8 @@ import java.awt.*;
  * @author manso - computer
  */
 public class Ball  extends GameObject{
-   
+
+
     int vx = 3;
     int vy = 2;
 

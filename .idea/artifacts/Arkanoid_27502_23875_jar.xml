@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Arkanoid-27502_23875:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Arkanoid_27502_23875_jar</output-path>
+    <root id="archive" name="Arkanoid-27502_23875.jar">
+      <element id="module-output" name="Arkanoid-27502_23875" />
+    </root>
+  </artifact>
+</component>

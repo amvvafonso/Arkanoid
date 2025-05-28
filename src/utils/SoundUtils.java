@@ -6,23 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created on 06/05/2024, 17:52:06
- *
- * @author IPT - computer
- * @version 1.0
- */
 public class SoundUtils {
 
-    /**
-     * Lê um som a partir de um recurso
-     *
-     * @param resourceName nome do recurso
-     * @return objeto que representa o som
-     * @throws IOException erros de I/O
-     * @throws UnsupportedAudioFileException formato não suportado
-     * @throws LineUnavailableException dados corrompidos
-     */
+
     public static Clip loadResourceSound(String resourceName) throws Exception {
         //input stream para o recurso        
         InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourceName);
@@ -36,13 +22,7 @@ public class SoundUtils {
         return clip;
     }
 
-    //obtido no Chat GPT 3.5 (06/05/2024
-    /**
-     * altera o volume do som
-     *
-     * @param clip som
-     * @param volume [0,1]
-     */
+
     public static void setVolume(Clip clip, double volume) {
         // Obtém o controlador de ganho do clipe
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -60,7 +40,7 @@ public class SoundUtils {
     public static void playSound(String name){
         try {
 
-            File file = new File( name + ".wav");
+            File file = new File( "src/sound/" + name + ".wav");
 
             AudioInputStream ais = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
