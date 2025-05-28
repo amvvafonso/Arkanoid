@@ -22,8 +22,26 @@ import java.util.logging.Logger;
 public class ArkanoidGame extends JComponent
         implements ActionListener, MouseMotionListener {
 
-
     private BufferedImage imgBack = null;
+    private BufferedImage imgBack1 = null;
+    private BufferedImage imgBack2 = null;
+    private int img_number=0;
+    private ArrayList<String> passover= ImageUtils.Background_img_list();
+    private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
+    private boolean check_wich_img_we_are_on = true;
+
+
+    public BufferedImage backimage_recreation(int img_number) {
+        for(int j=0;j<passover.size();j++){
+            try {
+                imgBack_list.add(j,ImageUtils.loadImage(passover.get(j)) );
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        return imgBack_list.get(img_number);
+    }
     Ball ball;
     ArrayList<Brick> bricks;
     Paddle pad;
@@ -31,23 +49,23 @@ public class ArkanoidGame extends JComponent
 
 
     Timer timer;
-    
-    
+
+
     public void saveGame(String path) throws Exception{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path));
         out.writeObject(ball);
         out.writeObject(pad);
-        out.writeObject(bricks); 
+        out.writeObject(bricks);
         out.close();
     }
-    
-    
+
+
     public void loadLevel(String file) throws IOException{
         List<String> txt = Files.readAllLines(Paths.get(file));
         //dimensoes dos blocos
         int dimX = getWidth() / txt.get(0).length();
         int dimY = getHeight() / txt.size();
-        
+
         bricks = new ArrayList<>();
         for (int y = 0; y < txt.size(); y++) {
             for (int x = 0; x < txt.get(y).length(); x++) {
@@ -57,7 +75,7 @@ public class ArkanoidGame extends JComponent
                 else if (txt.get(y).charAt(x) == '%'){
                     bricks.add( new Brick(Color.GRAY, x*dimX,y * dimY, dimX, dimY));
                 }
-                
+
             }
         }
         this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
@@ -65,8 +83,8 @@ public class ArkanoidGame extends JComponent
         this.ball.vx = 2;
         this.ball.vy = -2;
     }
-    
-    
+
+
     public void loadGame(String path) throws Exception{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
@@ -75,31 +93,44 @@ public class ArkanoidGame extends JComponent
         this.bricks = (ArrayList<Brick>) in.readObject();
         in.close();
     }
-    
-    
+
+
     public void stopGame(){
         timer.stop();
     }
     public void continueGame(){
         timer.start();
     }
+    public void image_fade() {
+        //imgBack1 = ImageUtils.loadImage("/images/background1.png");
+        // Preload all images
+        for (String path : passover) {
+            try {
+                imgBack_list.add(ImageUtils.loadImage(path));
+            } catch (IOException e) {}
+        }
+        imgBack = imgBack_list.get(img_number);
+        new Timer(2000, e -> {
+            img_number = (img_number++) % imgBack_list.size(); // loop back to beginning
+            imgBack = imgBack_list.get(img_number);
+            repaint();
+        }).start();
+    }
+
 
     public ArkanoidGame() {
         start();
         timer = new Timer(10, this);
         timer.start();
         running = true;
-        try {
-            imgBack = ImageUtils.loadImage("/multimedia/images/background1.png");
-            //imgBack = ImageUtils.changeTransparency(imgBack, 0.3f);
-        } catch (IOException ex) {
-            Logger.getLogger(ArkanoidGame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       image_fade();
+
 
         addMouseMotionListener(this);
     }
 
     public void start() {
+
         ball = new Ball(Color.yellow, 20, 20, 10);
         bricks = new ArrayList<>();
         bricks.add(new Brick(Color.GREEN, 10, 10, 30, 10));
