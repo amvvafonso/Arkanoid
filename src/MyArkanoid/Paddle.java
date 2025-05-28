@@ -3,6 +3,7 @@
 package MyArkanoid;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created on 06/05/2025, 18:20:10
@@ -10,6 +11,7 @@ import java.awt.*;
  * @author manso - computer
  */
 public class Paddle extends Animation {
+
 
     public static String[] imgs = {"/images/paddle0.png",
         "/images/paddle1.png",

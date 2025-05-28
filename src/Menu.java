@@ -1,5 +1,6 @@
 import MyArkanoid.playGame;
 import utils.FileUtils;
+import utils.SoundUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +22,7 @@ public class Menu extends JFrame {
         this.setResizable(false);
 
         // Scaled image
-        ImageIcon logo = new ImageIcon(getClass().getResource("Resources/arkanoid.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("resources/arkanoid.png"));
         Image originalImage = logo.getImage();
         Image scaledImage = originalImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
         ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
@@ -39,6 +40,7 @@ public class Menu extends JFrame {
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         playGame game = new playGame();
+                        SoundUtils.playSound("game-start");
                         game.setLocationRelativeTo(Menu.this);
                         game.setVisible(true);
                     }
@@ -52,6 +54,7 @@ public class Menu extends JFrame {
         credits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SoundUtils.playSound("click");
                 Credits credits = new Credits();
                 credits.setLocationRelativeTo(Menu.this);
             }
@@ -63,6 +66,7 @@ public class Menu extends JFrame {
         quit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SoundUtils.playSound("click");
                 FileUtils.deleteFile("puzzle.txt");
                 System.exit(0);
             }

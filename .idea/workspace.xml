@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Arkanoid-27502_23875:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Merge branch 'main' of https://github.com/aluno23785/Arkanoid&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/MyArkanoid/ArkanoidGame.java&#10;#&#9;src/utils/ImageUtils.java">
+    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Add soundeffects, music&#10;fixed paths&#10;add some buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,29 +19,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
-    {
-      "assignee": "aluno23785"
-    }
-  ],
-  "lastFilter": {
-    "assignee": "aluno23785"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/aluno23785/Arkanoid.git&quot;,
-    &quot;accountId&quot;: &quot;a15a3d9f-e742-4dba-9669-f2863f5ba4e8&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2xguFMVpfOJdVWCzhxPvVuB58r4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,39 +41,39 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
+    "Application.Test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jpgra/Desktop/ARKANOID_FINAL/Arkanoid",
+    "last_opened_file_path": "/Users/amvv/Documents/Java/Arkanoid-27502_23875/src/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15429688",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Arkanoid-27502_23875" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/resources" />
+      <recent name="$PROJECT_DIR$/src/Resources" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sound" />
+      <recent name="$PROJECT_DIR$/src/Resources" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -88,27 +85,70 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748371932457</updated>
-      <workItem from="1748371933451" duration="302000" />
-      <workItem from="1748385624934" duration="3641000" />
-      <workItem from="1748389299135" duration="5623000" />
+      <workItem from="1748371933451" duration="2350000" />
+      <workItem from="1748374294342" duration="43893000" />
     </task>
-    <task id="LOCAL-00001" summary="Merge branch 'main' of https://github.com/aluno23785/Arkanoid&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/MyArkanoid/ArkanoidGame.java&#10;#&#9;src/utils/ImageUtils.java">
+    <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
-      <created>1748463862744</created>
+      <created>1748372252657</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1748463862744</updated>
+      <updated>1748372252657</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adição de físicas no objetos do jogo&#10;Adição de randomizer de niveis">
+      <option name="closed" value="true" />
+      <created>1748385697993</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748385697993</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Some fixes">
+      <option name="closed" value="true" />
+      <created>1748391754110</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748391754110</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Responsive pause button">
+      <option name="closed" value="true" />
+      <created>1748394397778</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748394397778</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Responsive play aerea according to how many blocks are there&#10;some bug fixes">
+      <option name="closed" value="true" />
+      <created>1748431235093</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748431235093</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add soundeffects, music&#10;fixed paths&#10;add some buttons">
+      <option name="closed" value="true" />
+      <created>1748443628062</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748443628062</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alternar backgroundimagw" />
-    <MESSAGE value="Alternar backgroundimages melhor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alternar backgroundimages melhor" />
+    <MESSAGE value="First commit" />
+    <MESSAGE value="Adição de físicas no objetos do jogo&#10;Adição de randomizer de niveis" />
+    <MESSAGE value="Some fixes" />
+    <MESSAGE value="Responsive pause button" />
+    <MESSAGE value="Responsive play aerea according to how many blocks are there&#10;some bug fixes" />
+    <MESSAGE value="Add soundeffects, music&#10;fixed paths&#10;add some buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add soundeffects, music&#10;fixed paths&#10;add some buttons" />
   </component>
 </project>
