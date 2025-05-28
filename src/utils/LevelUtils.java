@@ -16,6 +16,10 @@ public class LevelUtils {
             String randomLevel = "";
             Random rand = new Random();
 
+            // # = Blocos vermelhos (pontos)
+            // % = Blocos cinzentos (parede)
+            // X = Blocos amarelos (operacoes)
+
             for (int y = 0; y < linhas; y++) {
                 for (int x = 0; x < colunas; x++) {
                     if (y > (colunas * 0.3)){
@@ -36,8 +40,6 @@ public class LevelUtils {
                         randomLevel += "X";
                     }
 
-
-
                 }
                 randomLevel += "\n";
             }
@@ -45,7 +47,7 @@ public class LevelUtils {
         }
         catch (Exception e){
             System.out.println(e.toString());
-            new ArkanoidException("Error creating random level").showError();
+            new ArkanoidException("Error creating level!").showError();
         }
         return " ###%####\n" +
                 "  ##%###\n" +

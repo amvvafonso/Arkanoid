@@ -23,7 +23,7 @@ public class Credits extends JDialog {
 
 
         //Scaled Image
-        ImageIcon logo = new ImageIcon(getClass().getResource("Resources/mugshot.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("resources/mugshot.png"));
         Image originalImage = logo.getImage();
         Image scaledImage = originalImage.getScaledInstance(280, 280, Image.SCALE_SMOOTH);
         ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
@@ -49,7 +49,7 @@ public class Credits extends JDialog {
 
 
 
-        voltar = new JButton("Voltar", new ImageIcon(getClass().getResource("Resources/ok.png")));
+        voltar = new JButton("Voltar", new ImageIcon(getClass().getResource("resources/ok.png")));
         voltar.setPreferredSize(new Dimension(600,80));
         voltar.addActionListener(new ActionListener() {
             @Override

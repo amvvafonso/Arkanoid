@@ -105,7 +105,7 @@ public class ArkanoidGame extends JComponent
         timer.start();
         running = true;
         try {
-            imgBack = ImageUtils.loadImage("/Resources/background.png");
+            imgBack = ImageUtils.loadImage("/resources/background.png");
             //imgBack = ImageUtils.changeTransparency(imgBack, 0.6f);
         } catch (IOException ex) {
             Logger.getLogger(ArkanoidGame.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,6 +154,7 @@ public class ArkanoidGame extends JComponent
 
         try {
 
+
                 if (!isDisplayable())
                 {
                     return;
@@ -163,8 +164,6 @@ public class ArkanoidGame extends JComponent
                 for (Brick brick : bricks) {
                     if (brick.intersects(ball) && brick.isVisible) {
                         if (brick.getMyColor().equals(Color.GRAY)) {
-
-
 
                             if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
                                 ball.vx *= -1;
@@ -200,12 +199,6 @@ public class ArkanoidGame extends JComponent
                                 }
                             }
 
-                            brick.isVisible = false;
-                            checkIfWin(brick);
-                            SoundUtils.playSound("pop");
-
-
-
                             if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
                                 ball.vx *= -1;
                             } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
@@ -218,6 +211,9 @@ public class ArkanoidGame extends JComponent
                                 ball.vy *= -1;
                                 ball.vx *= -1;
                             }
+                            brick.isVisible = false;
+                            checkIfWin(brick);
+                            SoundUtils.playSound("pop");
 
                         }
 
@@ -230,7 +226,7 @@ public class ArkanoidGame extends JComponent
             repaint();
         } catch (ArkanoidException ex) {
             if (this.isDisplayable()) {
-                SoundUtils.playSound("sound");
+                SoundUtils.playSound("game-over");
                 ex.showError();
                 timer.stop();
             }

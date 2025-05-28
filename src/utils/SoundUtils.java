@@ -2,9 +2,8 @@
 package utils;
 
 import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URL;
 
 public class SoundUtils {
 
@@ -37,12 +36,18 @@ public class SoundUtils {
 
     }
 
+
+
     public static void playSound(String name){
         try {
+            InputStream url = SoundUtils.class.getResourceAsStream("/sound/" + name + ".wav");
 
-            File file = new File( "/users/amvv/sound/" + name + ".wav");
+            // Debug - System.out.println(SoundUtils.class.getResource("/sound/pop.wav"));
 
-            AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+            InputStream buf = new BufferedInputStream(url);
+
+            AudioInputStream ais = AudioSystem.getAudioInputStream(buf);
+
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
             if (clip.isRunning()) {
@@ -54,4 +59,24 @@ public class SoundUtils {
             System.out.println(es);
         }
     }
+
+
+    public static void recreateFile(String name){
+        try {
+            String path = System.getProperty("user.dir") + name;
+            File file = new File(path + name + ".wav");
+            File output = new File(name + ".wav");
+
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+            AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
+
+            AudioSystem.write(audioInputStream, fileType, output);
+            SoundUtils soundUtils = new SoundUtils();
+            soundUtils.playSound(name + ".wav");
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 }

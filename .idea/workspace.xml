@@ -9,12 +9,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Responsive pause button">
+    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Responsive play aerea according to how many blocks are there&#10;some bug fixes">
+      <change afterPath="$PROJECT_DIR$/src/resources/cancel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/pausa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/restart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/click.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/game-over.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/game-start.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/music.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Arkanoid_27502_23875_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Arkanoid_27502_23875_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arkanoid-27502_23875.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Arkanoid-27502_23875.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Credits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Paddle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/arkanoid.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/arkanoid.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/mugshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/mugshot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/ok.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/ok.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
     </list>
@@ -50,7 +66,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/amvv/Documents/Java/Arkanoid-27502_23875/src/Resources",
+    "last_opened_file_path": "/Users/amvv/Documents/Java/Arkanoid-27502_23875/src/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -64,8 +80,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/resources" />
       <recent name="$PROJECT_DIR$/src/Resources" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sound" />
+      <recent name="$PROJECT_DIR$/src/Resources" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -85,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748371932457</updated>
       <workItem from="1748371933451" duration="2350000" />
-      <workItem from="1748374294342" duration="28119000" />
+      <workItem from="1748374294342" duration="40306000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -119,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748394397778</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Responsive play aerea according to how many blocks are there&#10;some bug fixes">
+      <option name="closed" value="true" />
+      <created>1748431235093</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748431235093</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +159,7 @@
     <MESSAGE value="Adição de físicas no objetos do jogo&#10;Adição de randomizer de niveis" />
     <MESSAGE value="Some fixes" />
     <MESSAGE value="Responsive pause button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Responsive pause button" />
+    <MESSAGE value="Responsive play aerea according to how many blocks are there&#10;some bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive play aerea according to how many blocks are there&#10;some bug fixes" />
   </component>
 </project>

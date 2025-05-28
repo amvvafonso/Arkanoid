@@ -14,7 +14,7 @@ public class ArkanoidException extends Exception{
     }
 
     public void showMessage(){
-        JOptionPane.showMessageDialog(null, getMessage(), "Arkanoid Result", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, getMessage(), "Arkanoid Result", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
