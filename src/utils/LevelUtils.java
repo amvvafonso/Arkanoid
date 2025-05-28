@@ -8,30 +8,35 @@ import java.util.Random;
 
 public class LevelUtils {
 
+    public static int colunas = 10;
+    public static int linhas = 8;
+
     public static String createRandomLevel() throws ArkanoidException{
         try {
             String randomLevel = "";
             Random rand = new Random();
 
-            int linhas = 8;
-            int colunas = 8;
-
             for (int y = 0; y < linhas; y++) {
                 for (int x = 0; x < colunas; x++) {
-                    if (y > colunas - (colunas * 0.4)){
+                    if (y > (colunas * 0.3)){
                         randomLevel += " ";
                         continue;
                     }
-                    int value = rand.nextInt(12);
+                    int value = rand.nextInt(1,40);
                     if (value < 2){
                         randomLevel += " ";
                     }
-                    else if (value > 3 && value < 9){
+                    else if (value > 3 && value < 35){
                         randomLevel += "#";
                     }
-                    else if (value == 3){
+                    else if (value > 35 && value < 39){
                         randomLevel += "%";
                     }
+                    else if (value == 39){
+                        randomLevel += "X";
+                    }
+
+
 
                 }
                 randomLevel += "\n";

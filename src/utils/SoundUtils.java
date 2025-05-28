@@ -40,7 +40,7 @@ public class SoundUtils {
     public static void playSound(String name){
         try {
 
-            File file = new File( "src/sound/" + name + ".wav");
+            File file = new File( "/users/amvv/sound/" + name + ".wav");
 
             AudioInputStream ais = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();

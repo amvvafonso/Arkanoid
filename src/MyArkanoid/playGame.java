@@ -55,15 +55,15 @@ public class playGame extends JFrame {
             }
         });
 
-        btPause.setText(this.arkanoidGame1.running ? "Pause" : "Resume");
+        btPause.setText(this.arkanoidGame1.running ? "Pause " : "Resume");
         btPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPauseActionPerformed(evt);
             }
         });
 
-        this.setResizable(false);
 
+        setForeground(Color.RED);
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,6 +76,7 @@ public class playGame extends JFrame {
                     .addComponent(btPause))
                 .addGap(18, 18, 18)
                 .addComponent(arkanoidGame1, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+
 
         );
         layout.setVerticalGroup(
@@ -105,7 +106,7 @@ public class playGame extends JFrame {
             }
             arkanoidGame1.timer.start();
             arkanoidGame1.running = true;
-            this.btPause.setText("Pause");
+            this.btPause.setText(" Pause  ");
         }
         catch (Exception ex) {
             Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);

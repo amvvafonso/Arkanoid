@@ -1,5 +1,6 @@
 import MyArkanoid.playGame;
 import utils.FileUtils;
+import utils.SoundUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,6 +53,7 @@ public class Menu extends JFrame {
         credits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SoundUtils.playSound("pop");
                 Credits credits = new Credits();
                 credits.setLocationRelativeTo(Menu.this);
             }
