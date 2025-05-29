@@ -10,6 +10,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,6 +53,7 @@ public class playGame extends JFrame {
         volume = new JSlider();
         volumeText = new JLabel();
 
+        Time_display = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,6 +104,8 @@ public class playGame extends JFrame {
                 BtNewLevelPerformed(evt);
             }
         });
+//
+
 
         volume.setMaximumSize(new Dimension(100,50));
         volume.setValue(100);
@@ -189,6 +193,7 @@ public class playGame extends JFrame {
     private void btPauseActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (arkanoidGame1.timer.isRunning()){
+                music.loop(10);
                 this.btPause.setText("Resume");
                 arkanoidGame1.timer.stop();
                 arkanoidGame1.running = false;
@@ -241,7 +246,11 @@ public class playGame extends JFrame {
     }
 
 
-
+      /*  public  String Time_tracker(){
+    Timer timer = new Timer();
+            return timer.toString();
+            timer.start();
+        }*/
 
     // Variables declaration
     private ArkanoidGame arkanoidGame1;
@@ -253,5 +262,6 @@ public class playGame extends JFrame {
     private Clip music;
     private JSlider volume;
     private JLabel volumeText;
+    private JLabel Time_display;
     // End of variables declaration
 }
