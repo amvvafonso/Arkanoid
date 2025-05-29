@@ -4,14 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 
 public class SelectUser extends JFrame {
 
-    private  String NOT_SELECTABLE_OPTION = " - Select an Option - ";
+    private final String NOT_SELECTABLE_OPTION = " - Select an Option - ";
     private JComboBox<String> selectUser;
     private JLabel titulo;
-    private UserInterface userInterface;
+    private UserController userInterface;
 
     public SelectUser() throws HeadlessException {
         initComponents();
@@ -23,7 +22,7 @@ public class SelectUser extends JFrame {
 
         //Controladores
 
-        String[] users = UserInterface.populateComboBoxWithUsers(UserInterface.returnUser());
+        String[] users = UserController.populateComboBoxWithUsers(UserController.returnUser());
 
         this.setTitle("Select User");
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -52,7 +51,7 @@ public class SelectUser extends JFrame {
         selectUser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                for (User user : UserInterface.getAllUsers()){
+                for (User user : UserController.getAllUsers()){
                     if (user.getNumAluno().equals(selectUser.getSelectedItem())) {
                         playGame playGame = new playGame(user);
                         playGame.setVisible(true);

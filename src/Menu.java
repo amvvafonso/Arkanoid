@@ -1,5 +1,5 @@
 import MyArkanoid.SelectUser;
-import MyArkanoid.UserInterface;
+import MyArkanoid.UserController;
 import utils.FileUtils;
 import utils.SoundUtils;
 
@@ -59,7 +59,7 @@ public class Menu extends JFrame {
         user.setVisible(true);
         user.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                UserInterface ui = new UserInterface();
+                UserController ui = new UserController();
                 ui.setLocationRelativeTo(Menu.this);
             }
         });

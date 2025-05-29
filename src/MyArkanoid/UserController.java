@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class UserInterface extends JFrame {
+public class UserController extends JFrame {
 
     private static String ficheiro = "leaderBoard.txt";
     private JTextField nome;
@@ -28,7 +28,7 @@ public class UserInterface extends JFrame {
     private JButton registar;
     private JButton eliminar;
     private File file;
-    public UserInterface() {
+    public UserController() {
         initComponents();
     }
 

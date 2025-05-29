@@ -19,9 +19,12 @@ public class playGame extends JFrame {
 
 
     private User jogador;
-
+    Temporizador temporizador;
     public playGame(User user) {
         try {
+            temporizador = new Temporizador();
+            temporizador.start();
+
             this.jogador = user;
             initComponents();
             arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
@@ -174,6 +177,9 @@ public class playGame extends JFrame {
 
     @Override
     public void dispose() {
+        temporizador.interrupt();
+        jogador.setTimePlayed(temporizador.getTempo());
+        System.out.println("Tempo jogado -> " + jogador.getTimePlayed());
         music.stop();
         super.dispose();
     }
