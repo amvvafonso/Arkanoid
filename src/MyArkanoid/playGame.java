@@ -178,8 +178,8 @@ public class playGame extends JFrame {
     @Override
     public void dispose() {
         temporizador.interrupt();
-        jogador.setTimePlayed(temporizador.getTempo());
-        System.out.println("Tempo jogado -> " + jogador.getTimePlayed());
+        jogador.setTimePlayed(jogador.getTimePlayed() + temporizador.getTempo());
+        UserController.updateUser(jogador);
         music.stop();
         super.dispose();
     }

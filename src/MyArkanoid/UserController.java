@@ -65,7 +65,7 @@ public class UserController extends JFrame {
         //Criacao da leaderboard
         if (!returnUser().isEmpty()) {
 
-            String[] columnames = {"Nome", "Nº de Aluno", "Pontos" ,"Tempo de jogo"};
+            String[] columnames = {"Nome", "Nº de Aluno", "Pontos" ,"Tempo de jogo (s)"};
 
             leaderBoard = new JTable(FileUtils.to2DArray(returnUser()), columnames){
                 @Override
@@ -341,5 +341,35 @@ public class UserController extends JFrame {
         return null;
     }
 
+    public static boolean updateUser(User user){
+        try {
+                File file = new File(ficheiro);
+                File tempFile = new File("tempFile.txt");
+                tempFile.createNewFile();
+
+                if (file.exists()) {
+                    Scanner sc = new Scanner(file);
+                    while (sc.hasNextLine()) {
+                        String data = sc.nextLine();
+                        String[] lstData = data.split("-");
+                        if (lstData[1].equals(user.getNumAluno())) {
+                            String[] tempo = new String[]{lstData[0],lstData[1], String.valueOf(user.getTimePlayed()), lstData[3]};
+                            Files.write(Paths.get(tempFile.getName()), (user.toString() + "\n").getBytes(), StandardOpenOption.APPEND);;
+                        }
+                        else {
+                            Files.write(Paths.get(tempFile.getName()), (data + "\n").getBytes(), StandardOpenOption.APPEND);;
+                        }
+                    }
+                    return tempFile.renameTo(new File(ficheiro));
+
+                }
+
+
+        }
+        catch (Exception es){
+            new ArkanoidException("Erro algo de errado não está certo").showError();
+        }
+        return false;
+    }
 
 }

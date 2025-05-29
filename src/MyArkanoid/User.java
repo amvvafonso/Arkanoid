@@ -95,6 +95,6 @@ public class User {
 
     @Override
     public String toString() {
-        return this.username + "-" + this.numAluno + "-" + this.pontos + "-" + this.timePlayed + "\n";
+        return this.username + "-" + this.numAluno + "-" + this.pontos + "-" + this.timePlayed;
     }
 }
