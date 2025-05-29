@@ -8,6 +8,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,6 +48,7 @@ public class playGame extends JFrame {
         btPause = new JButton();
         btRestart = new JButton();
         btNewLevel = new JButton();
+        Time_display = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,7 +100,11 @@ public class playGame extends JFrame {
                 BtNewLevelPerformed(evt);
             }
         });
+//
 
+
+
+         //
 
 
 
@@ -225,7 +231,11 @@ public class playGame extends JFrame {
     }
 
 
-
+      /*  public  String Time_tracker(){
+    Timer timer = new Timer();
+            return timer.toString();
+            timer.start();
+        }*/
 
     // Variables declaration
     private ArkanoidGame arkanoidGame1;
@@ -235,5 +245,6 @@ public class playGame extends JFrame {
     private JButton btRestart;
     private JButton btNewLevel;
     private Clip music;
+    private JLabel Time_display;
     // End of variables declaration
 }

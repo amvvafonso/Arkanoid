@@ -26,7 +26,7 @@ public class ArkanoidGame extends JComponent
         implements ActionListener, MouseMotionListener {
 
     private BufferedImage imgBack = null;
-    private int img_number=3;
+    private int img_number=0;
     private ArrayList<String> passover= ImageUtils.Background_img_list();
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
 
@@ -37,6 +37,7 @@ public class ArkanoidGame extends JComponent
     List<Brick> BricksToRemove = new ArrayList<>();
     Boolean powerUsed = false;
     Timer timer;
+    String Time_display;
     int counter = 0;
 
 
@@ -135,10 +136,11 @@ public class ArkanoidGame extends JComponent
 
     }
      //
-    public ArkanoidGame() {
+        public ArkanoidGame() {
 
         start();
         timer = new Timer(10, this);
+        show_time();
         timer.start();
         running = true;
         image_fade();
@@ -149,10 +151,13 @@ public class ArkanoidGame extends JComponent
         addMouseMotionListener(this);
 
         timer.stop();
+
         running = false;
 
     }
+//
 
+    //
     public void start() {
 
 
@@ -165,7 +170,21 @@ public class ArkanoidGame extends JComponent
 
     }
 
+public void show_time()  {
+   long start_time=System.currentTimeMillis();
+    final long[] last_second = {0};
+    new Thread(() -> {
+        while(true){
+            long current_time=(System.currentTimeMillis()-start_time)/1000;
+            if(current_time > last_second[0]){
+                Time_display=current_time+"";
+               // System.out.println(Time_display);
+                last_second[0] =current_time;
+            }
+        }
+    }).start();
 
+    }
     public void paintComponent(Graphics gr) {
 
         if (imgBack != null) {
