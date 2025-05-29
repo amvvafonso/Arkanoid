@@ -6,6 +6,8 @@ import utils.SoundUtils;
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -35,7 +37,7 @@ public class playGame extends JFrame {
         //Music
 
         music = SoundUtils.playSound("music");
-
+        music.loop(500);
 
 
 
@@ -47,6 +49,9 @@ public class playGame extends JFrame {
         btPause = new JButton();
         btRestart = new JButton();
         btNewLevel = new JButton();
+        volume = new JSlider();
+        volumeText = new JLabel();
+
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,7 +87,6 @@ public class playGame extends JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
                     arkanoidGame1.loadLevel("puzzle.txt");
-                    arkanoidGame1.stopGame();
                     btPause.setText("Resume");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -99,9 +103,18 @@ public class playGame extends JFrame {
             }
         });
 
+        volume.setMaximumSize(new Dimension(100,50));
+        volume.setValue(100);
+        volume.setToolTipText("Volume");
+        volume.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                System.out.println(volume.getValue());
+                SoundUtils.setVolume(music, volume.getValue() * 0.01);
+            }
+        });
 
 
-
+        volumeText.setText("Volume");
 
         //CONFIGURACAO LAYOUT
 
@@ -115,6 +128,8 @@ public class playGame extends JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addComponent(btSave)
                     .addComponent(btLoad)
+                        .addComponent(volumeText)
+                        .addComponent(volume)
                     .addComponent(btPause)
                         .addComponent(btNewLevel)
                         .addComponent(btRestart))
@@ -129,7 +144,9 @@ public class playGame extends JFrame {
                     .addGap(5,5,5)
                 .addComponent(btSave)
                 .addComponent(btLoad)
-                    .addGap(220, 220, 220)
+                    .addComponent(volumeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volume)
+                    .addGap(170, 170, 170)
                     .addComponent(btRestart)
                     .addComponent(btPause)
                     .addGap(50, 50, 50)
@@ -151,8 +168,8 @@ public class playGame extends JFrame {
 
     @Override
     public void dispose() {
-        music.stop(); // Call your custom method
-        super.dispose(); // Then call the superclass's dispose
+        music.stop();
+        super.dispose();
     }
 
 
@@ -172,7 +189,6 @@ public class playGame extends JFrame {
     private void btPauseActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (arkanoidGame1.timer.isRunning()){
-                music.loop(10);
                 this.btPause.setText("Resume");
                 arkanoidGame1.timer.stop();
                 arkanoidGame1.running = false;
@@ -235,5 +251,7 @@ public class playGame extends JFrame {
     private JButton btRestart;
     private JButton btNewLevel;
     private Clip music;
+    private JSlider volume;
+    private JLabel volumeText;
     // End of variables declaration
 }

@@ -3,6 +3,7 @@ package utils;
 import MyArkanoid.ArkanoidException;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileUtils {
@@ -43,5 +44,25 @@ public class FileUtils {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static String[][] to2DArray(ArrayList<ArrayList<String>> lista){
+        try {
+            String[][] dados = new String[lista.size()][];
+            for (int i = 0; i < lista.size(); i++) {
+                String[] temp = new String[lista.get(i).size()];
+                for (int j = 0; j < lista.get(i).size(); j++) {
+                    temp[j] = lista.get(i).get(j);
+                }
+                dados[i] = temp;
+            }
+            return dados;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            new ArkanoidException("Erro a apresentar leaderboard").showError();
+            return null;
+        }
+
     }
 }

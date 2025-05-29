@@ -75,8 +75,8 @@ public class ArkanoidGame extends JComponent
         }
         this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
         this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 10);
-        this.ball.vx = 1;
-        this.ball.vy = new Random().nextInt(-2,-1);
+        this.ball.vx = 2;
+        this.ball.vy = -2;
     }
     
     

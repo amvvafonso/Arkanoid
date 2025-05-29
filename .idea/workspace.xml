@@ -9,10 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Add soundeffects, music&#10;fixed paths&#10;add some buttons">
+    <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Fixed some music controllers">
+      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FileUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +59,8 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15429688",
     "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -86,7 +92,8 @@
       <option name="presentableId" value="Default" />
       <updated>1748371932457</updated>
       <workItem from="1748371933451" duration="2350000" />
-      <workItem from="1748374294342" duration="43893000" />
+      <workItem from="1748374294342" duration="48354000" />
+      <workItem from="1748528810948" duration="15717000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -136,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748443628062</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed some music controllers">
+      <option name="closed" value="true" />
+      <created>1748447081204</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748447081204</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +164,7 @@
     <MESSAGE value="Responsive pause button" />
     <MESSAGE value="Responsive play aerea according to how many blocks are there&#10;some bug fixes" />
     <MESSAGE value="Add soundeffects, music&#10;fixed paths&#10;add some buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add soundeffects, music&#10;fixed paths&#10;add some buttons" />
+    <MESSAGE value="Fixed some music controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some music controllers" />
   </component>
 </project>

@@ -12,13 +12,14 @@ public class Menu extends JFrame {
     JLabel jLabel;
     JLabel image;
     JButton start;
+    JButton user;
     JButton credits;
     JButton quit;
 
     public Menu(){
         //Configurações Iniciais
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(300,500));
+        this.setPreferredSize(new Dimension(300,550));
         this.setResizable(false);
 
         // Scaled image
@@ -39,6 +40,7 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
+
                         playGame game = new playGame();
                         SoundUtils.playSound("game-start");
                         game.setLocationRelativeTo(Menu.this);
@@ -48,13 +50,22 @@ public class Menu extends JFrame {
             }
         });
 
+        user = new JButton("User");
+        user.setMaximumSize(new Dimension(300,50));
+        user.setVisible(true);
+        user.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                UserInterface ui = new UserInterface();
+                ui.setLocationRelativeTo(Menu.this);
+            }
+        });
+
         credits = new JButton("Credits");
         credits.setMaximumSize(new Dimension(300,50));
         credits.setVisible(true);
         credits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SoundUtils.playSound("click");
                 Credits credits = new Credits();
                 credits.setLocationRelativeTo(Menu.this);
             }
@@ -66,7 +77,6 @@ public class Menu extends JFrame {
         quit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SoundUtils.playSound("click");
                 FileUtils.deleteFile("puzzle.txt");
                 System.exit(0);
             }
@@ -78,6 +88,7 @@ public class Menu extends JFrame {
         window.setLayout(new BoxLayout(window, BoxLayout.Y_AXIS));
         window.add(image);
         window.add(start);
+        window.add(user);
         window.add(credits);
         window.add(quit);
 
