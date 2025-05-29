@@ -18,9 +18,11 @@ import java.util.logging.Logger;
 public class playGame extends JFrame {
 
 
+    private User jogador;
 
-    public playGame() {
+    public playGame(User user) {
         try {
+            this.jogador = user;
             initComponents();
             arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
 
@@ -41,7 +43,7 @@ public class playGame extends JFrame {
         music.loop(500);
 
 
-
+        System.out.println("Selected user was - " + jogador.getUsername());
         //CONFGURACAO BOTOES
 
         arkanoidGame1 = new ArkanoidGame();

@@ -65,4 +65,22 @@ public class FileUtils {
         }
 
     }
+
+    public static String[] to1DArray(ArrayList<ArrayList<String>> lista){
+        try {
+            String[] dados = new String[lista.size()];
+            for (int i = 0; i < lista.size(); i++) {
+                for (int j = 0; j < lista.get(i).size(); j++) {
+                    dados[i] += lista.get(i).get(j);
+                }
+            }
+
+            return dados;
+        }
+        catch (Exception es){
+            es.printStackTrace();
+            new ArkanoidException("Erro a apresentar seleção de user").showError();
+            return null;
+        }
+    }
 }

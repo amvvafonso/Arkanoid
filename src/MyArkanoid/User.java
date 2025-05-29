@@ -1,6 +1,4 @@
-import MyArkanoid.ArkanoidException;
-
-import java.sql.Time;
+package MyArkanoid;
 
 public class User {
     private String username;
@@ -14,6 +12,13 @@ public class User {
         this.numAluno = "";
         this.pontos = 0;
         this.timePlayed = 0;
+    }
+
+    public User(String username, String numAluno, int pontos, long timePlayed) {
+        this.username = username;
+        this.numAluno = numAluno;
+        this.pontos = pontos;
+        this.timePlayed = timePlayed;
     }
 
     public int getPontos() {

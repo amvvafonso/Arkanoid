@@ -1,9 +1,10 @@
 
-
 package MyArkanoid;
+
 import utils.ImageUtils;
 import utils.LevelUtils;
 import utils.SoundUtils;
+
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
@@ -41,8 +42,7 @@ public class ArkanoidGame extends JComponent
     int counter = 0;
 
 
-
-
+    private User jogador;
 
 
     public void saveGame(String path) throws Exception{
@@ -98,6 +98,7 @@ public class ArkanoidGame extends JComponent
         running = false;
         timer.stop();
     }
+
     public void continueGame(){
         running = true;
         timer.start();
@@ -123,7 +124,7 @@ public class ArkanoidGame extends JComponent
         for (String path : passover) {
             try {
                 imgBack_list.add(ImageUtils.loadImage(path));
-            } catch (IOException _) {}
+            } catch (IOException _e) {}
         }
         imgBack = imgBack_list.get(img_number);
         new Timer(3000, e -> {

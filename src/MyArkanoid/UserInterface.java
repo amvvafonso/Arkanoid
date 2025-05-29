@@ -1,20 +1,17 @@
-import MyArkanoid.ArkanoidException;
-import MyArkanoid.ArkanoidGame;
+package MyArkanoid;
+
 import utils.FileUtils;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -24,7 +21,7 @@ import java.util.Scanner;
 
 public class UserInterface extends JFrame {
 
-    private final String ficheiro = "leaderBoard.txt";
+    private static String ficheiro = "leaderBoard.txt";
     private JTextField nome;
     private JTextField numAluno;
     private JTable leaderBoard;
@@ -223,7 +220,6 @@ public class UserInterface extends JFrame {
 
         setVisible(true);
         pack();
-
     }
 
 
@@ -290,8 +286,26 @@ public class UserInterface extends JFrame {
     }
 
 
+    public static ArrayList<User> getAllUsers(){
+        try {
+            File file = new File(ficheiro);
+            ArrayList<User> tempUsers = new ArrayList<>();
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                String data = sc.nextLine();
+                String[] lstData = data.split("-");
+                tempUsers.add(new User(lstData[0],lstData[1],Integer.parseInt(lstData[2]),Long.parseLong(lstData[3])));
+            }
+            return tempUsers;
+        }
+        catch (Exception es){
+            es.printStackTrace();
+        }
+        return null;
+    }
 
-    public ArrayList<ArrayList<String>> returnUser(){
+
+    public static ArrayList<ArrayList<String>> returnUser(){
         try{
             File file = new File(ficheiro);
             ArrayList<ArrayList<String>> userArrayList = new ArrayList<>();
@@ -311,5 +325,21 @@ public class UserInterface extends JFrame {
             return new ArrayList<ArrayList<String>>();
         }
     }
+
+
+    public static String[] populateComboBoxWithUsers(ArrayList<ArrayList<String>> userArrayList){
+        try {
+            String[] users = new String[userArrayList.size()];
+            for (int i = 0; i < userArrayList.size(); i++) {
+                users[i] = userArrayList.get(i).get(1);
+            }
+            return users;
+        }
+        catch (Exception es){
+            es.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

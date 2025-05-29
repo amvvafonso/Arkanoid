@@ -1,4 +1,5 @@
-import MyArkanoid.playGame;
+import MyArkanoid.SelectUser;
+import MyArkanoid.UserInterface;
 import utils.FileUtils;
 import utils.SoundUtils;
 
@@ -41,10 +42,13 @@ public class Menu extends JFrame {
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
 
-                        playGame game = new playGame();
+                        SelectUser selectUser = new SelectUser();
+                        selectUser.setLocationRelativeTo(Menu.this);
+
+                        //playGame game = new playGame();
                         SoundUtils.playSound("game-start");
-                        game.setLocationRelativeTo(Menu.this);
-                        game.setVisible(true);
+                        //game.setLocationRelativeTo(Menu.this);
+                        //game.setVisible(true);
                     }
                 });
             }
