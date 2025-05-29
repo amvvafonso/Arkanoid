@@ -2,26 +2,48 @@
 package utils;
 
 import javax.sound.sampled.*;
-import java.io.*;
-import java.net.URL;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
+/**
+ * Created on 06/05/2024, 17:52:06
+ *
+ * @author IPT - computer
+ * @version 1.0
+ */
 public class SoundUtils {
 
-
+    /**
+     * Lê um som a partir de um recurso
+     *
+     * @param resourceName nome do recurso
+     * @return objeto que representa o som
+     * @throws IOException erros de I/O
+     * @throws UnsupportedAudioFileException formato não suportado
+     * @throws LineUnavailableException dados corrompidos
+     */
     public static Clip loadResourceSound(String resourceName) throws Exception {
-        //input stream para o recurso        
+        //input stream para o recurso
         InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourceName);
         //input stream para ler som
         AudioInputStream ain = AudioSystem.getAudioInputStream(in);
         //obter o objeto para tocar o som
         Clip clip = AudioSystem.getClip();
-        //ler o som 
+        //ler o som
         clip.open(ain);
         //retorn o som
         return clip;
     }
 
-
+    //obtido no Chat GPT 3.5 (06/05/2024
+    /**
+     * altera o volume do som
+     *
+     * @param clip som
+     * @param volume [0,1]
+     */
     public static void setVolume(Clip clip, double volume) {
         // Obtém o controlador de ganho do clipe
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -36,49 +58,43 @@ public class SoundUtils {
 
     }
 
-
-
-    public static Clip playSound(String name){
+    public static void playSound(String name){
         try {
-            InputStream url = SoundUtils.class.getResourceAsStream("/sound/" + name + ".wav");
 
-            // Debug - System.out.println(SoundUtils.class.getResource("/sound/pop.wav"));
+            File file = new File( name + ".wav");
 
-            InputStream buf = new BufferedInputStream(url);
-
-            AudioInputStream ais = AudioSystem.getAudioInputStream(buf);
-
+            AudioInputStream ais = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
             if (clip.isRunning()) {
                 clip.stop();
             }
             clip.start();
-            return clip;
         }
         catch (Exception es){
             System.out.println(es);
         }
-        return null;
     }
 
+    public /*String*/ ArrayList<String> Soundtrack_list(/*int ii*/){
 
-    public static void recreateFile(String name){
-        try {
-            String path = System.getProperty("user.dir") + name;
-            File file = new File(path + name + ".wav");
-            File output = new File(name + ".wav");
-
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-            AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
-
-            AudioSystem.write(audioInputStream, fileType, output);
-            SoundUtils soundUtils = new SoundUtils();
-            soundUtils.playSound(name + ".wav");
+        String folder_path_name = "por_definir";
+        int i = 0;
+        File soundtrack_folder = new File(folder_path_name);
+        String music_track_checker = "soundtrack";
+        File[] sound_files_list = soundtrack_folder.listFiles();//lista de ficheiros no folder
+        ArrayList<String> soundtrack_files_list = new ArrayList<String>();
+        //diferenciar ficheiros para usar na soundtrack
+        for (File file : sound_files_list) {
+            if (file.getName().contains(music_track_checker)) {
+                soundtrack_files_list.add("/por_definir/"+file.getName());
+            }
         }
-        catch (Exception e){
-            System.out.println(e);
-        }
+        //assert files != null;
+       /* while(i<background_img_files_list.size()){
+        System.out.println("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ background_img_files_list.get(i));i++;}
+    */
+        //return background_img_files_list.get(ii);
+        return soundtrack_files_list;
     }
-
 }
