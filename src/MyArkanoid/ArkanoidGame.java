@@ -5,6 +5,7 @@ import utils.ImageUtils;
 import utils.LevelUtils;
 import utils.SoundUtils;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,8 +25,10 @@ import java.util.logging.Logger;
 public class ArkanoidGame extends JComponent
         implements ActionListener, MouseMotionListener {
 
-
     private BufferedImage imgBack = null;
+    private int img_number=3;
+    private ArrayList<String> passover= ImageUtils.Background_img_list();
+    private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
 
     Ball ball;
     ArrayList<Brick> bricks;
@@ -99,21 +102,55 @@ public class ArkanoidGame extends JComponent
         timer.start();
     }
 
+
+    //
+    public BufferedImage backimage_recreation(int img_number) {
+        for(int j=0;j<passover.size();j++){
+            try {
+                imgBack_list.add(j,ImageUtils.loadImage(passover.get(j)) );
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        return imgBack_list.get(img_number);
+    }
+    //
+     //
+    public void image_fade() {
+        //imgBack1 = ImageUtils.loadImage("/images/background1.png");
+        for (String path : passover) {
+            try {
+                imgBack_list.add(ImageUtils.loadImage(path));
+            } catch (IOException _) {}
+        }
+        imgBack = imgBack_list.get(img_number);
+        new Timer(3000, e -> {
+            img_number = (img_number + 1) % imgBack_list.size();
+            imgBack = imgBack_list.get(img_number);
+            repaint();
+        }).start();
+    }
+    public void soundtrack_rotation() {
+
+    }
+     //
     public ArkanoidGame() {
+
         start();
         timer = new Timer(10, this);
         timer.start();
         running = true;
-        try {
-            imgBack = ImageUtils.loadImage("/resources/background.png");
+        image_fade();
+
             //imgBack = ImageUtils.changeTransparency(imgBack, 0.6f);
-        } catch (IOException ex) {
-            Logger.getLogger(ArkanoidGame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
 
         addMouseMotionListener(this);
+
         timer.stop();
         running = false;
+
     }
 
     public void start() {

@@ -10,8 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73cbf145-84b8-4c00-a56b-6aec39fc3f17" name="Changes" comment="Add soundeffects, music&#10;fixed paths&#10;add some buttons">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ImageUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +31,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "aluno23785"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/amvvafonso/Arkanoid.git",
+    "accountId": "a15a3d9f-e742-4dba-9669-f2863f5ba4e8"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2xguFMVpfOJdVWCzhxPvVuB58r4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -42,9 +55,12 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.Test.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/amvv/Documents/Java/Arkanoid-27502_23875/src/resources",
     "node.js.detected.package.eslint": "true",
@@ -69,11 +85,20 @@
       <recent name="$PROJECT_DIR$/src/Resources" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Arkanoid-27502_23875" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -87,6 +112,7 @@
       <updated>1748371932457</updated>
       <workItem from="1748371933451" duration="2350000" />
       <workItem from="1748374294342" duration="43893000" />
+      <workItem from="1748476297577" duration="3806000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
