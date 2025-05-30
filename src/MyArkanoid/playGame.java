@@ -92,6 +92,7 @@ public class playGame extends JFrame {
         btRestart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
+                  //  arkanoidGame1.ArkanoidGame
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
                 } catch (IOException e) {
@@ -279,6 +280,7 @@ public class playGame extends JFrame {
             return timer.toString();
             timer.start();
         }*/
+
 
     // Variables declaration
     private ArkanoidGame arkanoidGame1;
