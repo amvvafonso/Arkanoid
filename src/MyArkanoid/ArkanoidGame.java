@@ -80,7 +80,7 @@ public class ArkanoidGame extends JComponent
             }
         }
         this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
-        this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 10);
+        this.ball = new Ball(Color.yellow, getWidth()/4,  getHeight()-60, 10);
         this.ball.vx = 2;
         this.ball.vy = -2;
     }
@@ -130,6 +130,7 @@ public class ArkanoidGame extends JComponent
 
         start();
         timer = new Timer(10, this);
+       show_time();
         timer.start();
         running = true;
         image_fade();
@@ -241,8 +242,8 @@ public class ArkanoidGame extends JComponent
                             brick.isVisible = false;
                             //
                             Score++;
-                            playGame.Display_time.setText(temporizador.getTempo()+"");
                             playGame.Display_Score.setText("Score: "+Score);
+                            //playGame.Display_time=Temporizador.getTempo();
                             //
                             checkIfWin(brick);
                             SoundUtils.playSound("pop");
@@ -280,6 +281,24 @@ public class ArkanoidGame extends JComponent
             System.out.println(es.toString());
         }
     }
+    public void show_time()  {
+        long start_time=System.currentTimeMillis();
+        final long[] last_second = {0};
+        new Thread(() -> {
+            while(running=true){
+                long current_time=(System.currentTimeMillis()-start_time)/1000;
+                if(current_time > last_second[0]){
+                    Time_display=current_time%60+"";
+                    Time_display_minutes=""+(current_time/60);
+                    playGame.Display_time.setText("Play Time: "+Time_display_minutes+" : "+Time_display);
+                    // System.out.println(Time_display); show in console
+                    last_second[0] =current_time;
+                }
+            }
+        }).start();
+
+    }
+
 
     @Override
     public void mouseDragged(MouseEvent e) {
