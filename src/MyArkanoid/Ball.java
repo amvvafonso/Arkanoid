@@ -16,6 +16,8 @@
 
 package MyArkanoid;
 
+import utils.ImageUtils;
+
 import java.awt.*;
 
 /**
@@ -29,7 +31,7 @@ public class Ball  extends GameObject{
     int vy = 2;
 
     public Ball(Color myColor, int x, int y, int radius) {
-        super(myColor,x, y, radius, radius);
+        super(ImageUtils.Ball_color(),x, y, radius, radius);
     }
     
     
