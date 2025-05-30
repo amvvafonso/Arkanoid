@@ -10,6 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="824d2ff9-7e68-4ace-a6af-2a19b79e12e4" name="Changes" comment="added timer counter and some bug fixes">
+    <list default="true" id="824d2ff9-7e68-4ace-a6af-2a19b79e12e4" name="Changes" comment="Added leaderboard and some functionality&#10;New user class to deal with the player">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
@@ -17,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +33,10 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,8 +56,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "two.files.diff.last.used.file": "C:/Users/jpgra/Desktop/Code Projects/Backup_Arkanoid_1/Arkanoid/src/MyArkanoid/ArkanoidGame.java",
+    "two.files.diff.last.used.folder": "C:/Users/jpgra/Desktop/Code Projects/Backup_Arkanoid_1/Arkanoid"
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,6 +73,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Arkanoid-27502_23875" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -105,6 +125,7 @@
       <workItem from="1748610503486" duration="6739000" />
     </task>
     <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -19,7 +19,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,9 +31,7 @@ public class ArkanoidGame extends JComponent
     private int img_number=0;
     private ArrayList<String> passover= ImageUtils.Background_img_list();
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
-
-
-
+    private static int Score=0;
     Ball ball;
     ArrayList<Brick> bricks;
     Paddle pad;
@@ -42,7 +39,10 @@ public class ArkanoidGame extends JComponent
     List<Brick> BricksToRemove = new ArrayList<>();
     Boolean powerUsed = false;
     Timer timer;
-    private int counter = 0;
+   static String Time_display;
+    static String Time_display_minutes;
+    int counter = 0;
+
 
     private User jogador;
 
@@ -84,7 +84,8 @@ public class ArkanoidGame extends JComponent
         this.ball.vx = 2;
         this.ball.vy = -2;
     }
-
+    
+    
     public void loadGame(String path) throws Exception{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
@@ -93,7 +94,8 @@ public class ArkanoidGame extends JComponent
         this.bricks = (ArrayList<Brick>) in.readObject();
         in.close();
     }
-
+    
+    
     public void stopGame(){
         running = false;
         timer.stop();
@@ -103,19 +105,6 @@ public class ArkanoidGame extends JComponent
         running = true;
         timer.start();
     }
-
-    public BufferedImage backimage_recreation(int img_number) {
-        for(int j=0;j<passover.size();j++){
-            try {
-                imgBack_list.add(j,ImageUtils.loadImage(passover.get(j)) );
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        return imgBack_list.get(img_number);
-    }
-
     public void image_fade() {
         //imgBack1 = ImageUtils.loadImage("/images/background1.png");
         for (String path : passover) {
@@ -137,9 +126,7 @@ public class ArkanoidGame extends JComponent
 
     public ArkanoidGame() {
 
-        //Tempo de jogo
 
-        //Inicio
         start();
         timer = new Timer(10, this);
         timer.start();
@@ -179,6 +166,7 @@ public class ArkanoidGame extends JComponent
             gr.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
         }
 
+
         ball.paint(gr);
 
 
@@ -189,8 +177,6 @@ public class ArkanoidGame extends JComponent
 
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -200,8 +186,7 @@ public class ArkanoidGame extends JComponent
                     return;
                 }
 
-
-                ball.move(getBounds());
+                ball.move(this.getBounds());
                 for (Brick brick : bricks) {
                     if (brick.intersects(ball) && brick.isVisible) {
                         if (brick.getMyColor().equals(Color.GRAY)) {
@@ -223,7 +208,7 @@ public class ArkanoidGame extends JComponent
                         else if (!brick.getMyColor().equals(Color.GRAY)) {
 
                             if (brick.getMyColor().equals(Color.YELLOW)) {
-                                if (ball.width != 5) {
+                                if (!powerUsed) {
                                     powerUsed = true;
                                     ball.width -= 5;
                                     ball.height -= 5;
@@ -253,6 +238,10 @@ public class ArkanoidGame extends JComponent
                                 ball.vx *= -1;
                             }
                             brick.isVisible = false;
+                            //
+                            Score++;
+                            playGame.Display_Score.setText("Score: "+Score);
+                            //
                             checkIfWin(brick);
                             SoundUtils.playSound("pop");
 
@@ -262,6 +251,7 @@ public class ArkanoidGame extends JComponent
                 }
 
             pad.collide(ball);
+
 
             repaint();
         } catch (ArkanoidException ex) {

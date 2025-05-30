@@ -15,15 +15,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class playGame extends JFrame{
+public class playGame extends JFrame {
 
 
     private User jogador;
-    private Temporizador temporizador;
-
-    ArkanoidGame arkanoidGame1 = new ArkanoidGame();
+    Temporizador temporizador;
     public playGame(User user) {
         try {
+
             this.jogador = user;
             initComponents();
             arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
@@ -49,6 +48,7 @@ public class playGame extends JFrame{
         System.out.println("Selected user was - " + jogador.getUsername());
         //CONFGURACAO BOTOES
 
+        arkanoidGame1 = new ArkanoidGame();
         btSave = new JButton();
         btLoad = new JButton();
         btPause = new JButton();
@@ -56,8 +56,8 @@ public class playGame extends JFrame{
         btNewLevel = new JButton();
         volume = new JSlider();
         volumeText = new JLabel();
-
-
+        Display_Score= new JTextField();
+        Display_time = new JTextField();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,7 +109,15 @@ public class playGame extends JFrame{
             }
         });
 //
-
+        Display_time.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
+        Display_time.setBackground(Color.BLACK);
+        Display_time.setForeground(Color.RED);
+        //
+//
+        Display_Score.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
+        Display_Score.setBackground(Color.BLACK);
+        Display_Score.setForeground(Color.YELLOW);
+        //
 
         volume.setMaximumSize(new Dimension(100,50));
         volume.setValue(100);
@@ -138,6 +146,12 @@ public class playGame extends JFrame{
                     .addComponent(btLoad)
                         .addComponent(volumeText)
                         .addComponent(volume)
+                        //
+                        .addComponent(Display_time)
+                        //
+                        //
+                        .addComponent(Display_Score)
+                        //
                     .addComponent(btPause)
                         .addComponent(btNewLevel)
                         .addComponent(btRestart))
@@ -155,6 +169,12 @@ public class playGame extends JFrame{
                     .addComponent(volumeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(volume)
                     .addGap(170, 170, 170)
+                    //
+                    .addComponent(Display_time)
+                    //
+                    //
+                    .addComponent(Display_Score)
+                    //
                     .addComponent(btRestart)
                     .addComponent(btPause)
                     .addGap(50, 50, 50)
@@ -169,8 +189,6 @@ public class playGame extends JFrame{
 
         pack();
     }
-
-
 
 
 
@@ -255,8 +273,14 @@ public class playGame extends JFrame{
     }
 
 
+      /*  public  String Time_tracker(){
+    Timer timer = new Timer();
+            return timer.toString();
+            timer.start();
+        }*/
 
     // Variables declaration
+    private ArkanoidGame arkanoidGame1;
     private JButton btLoad;
     private JButton btSave;
     private JButton btPause;
@@ -265,9 +289,7 @@ public class playGame extends JFrame{
     private Clip music;
     private JSlider volume;
     private JLabel volumeText;
-
+    static JTextField Display_time;
+    static JTextField Display_Score;
     // End of variables declaration
-
-
-
 }

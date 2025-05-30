@@ -1,0 +1,200 @@
+Index: src/MyArkanoid/playGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package MyArkanoid;\r\n\r\nimport utils.FileUtils;\r\nimport utils.ImageUtils;\r\nimport utils.SoundUtils;\r\n\r\nimport javax.sound.sampled.Clip;\r\nimport javax.swing.*;\r\nimport javax.swing.event.ChangeEvent;\r\nimport javax.swing.event.ChangeListener;\r\nimport java.awt.*;\r\nimport java.io.IOException;\r\nimport java.util.Timer;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\n\r\n\r\npublic class playGame extends JFrame {\r\n\r\n\r\n    private User jogador;\r\n    Temporizador temporizador;\r\n    public playGame(User user) {\r\n        try {\r\n            temporizador = new Temporizador();\r\n            temporizador.start();\r\n\r\n            this.jogador = user;\r\n            initComponents();\r\n            arkanoidGame1.loadLevel(FileUtils.createPuzzle(\"puzzle.txt\"));\r\n\r\n\r\n    } catch (IOException ex) {\r\n            JOptionPane.showMessageDialog(this, ex.getMessage());\r\n            Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n\r\n\r\n    private void initComponents() {\r\n\r\n        //Music\r\n\r\n        music = SoundUtils.playSound(\"music\");\r\n        music.loop(500);\r\n\r\n\r\n        System.out.println(\"Selected user was - \" + jogador.getUsername());\r\n        //CONFGURACAO BOTOES\r\n\r\n        arkanoidGame1 = new ArkanoidGame();\r\n        btSave = new JButton();\r\n        btLoad = new JButton();\r\n        btPause = new JButton();\r\n        btRestart = new JButton();\r\n        btNewLevel = new JButton();\r\n        volume = new JSlider();\r\n        volumeText = new JLabel();\r\n\r\n        Time_display = new JLabel();\r\n\r\n        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);\r\n\r\n        btSave.setText(\"  Save  \");\r\n        btSave.setIcon(UIManager.getIcon(\"FileView.fileIcon\"));\r\n        btSave.addActionListener(new java.awt.event.ActionListener() {\r\n            public void actionPerformed(java.awt.event.ActionEvent evt) {\r\n                btSaveActionPerformed(evt);\r\n            }\r\n        });\r\n\r\n        btLoad.setText(\"  Load  \");\r\n        btLoad.setIcon(UIManager.getIcon(\"FileView.directoryIcon\"));\r\n        btLoad.addActionListener(new java.awt.event.ActionListener() {\r\n            public void actionPerformed(java.awt.event.ActionEvent evt) {\r\n                btLoadActionPerformed(evt);\r\n            }\r\n        });\r\n\r\n        btPause.setText(this.arkanoidGame1.running ? \" Pause \" : \"Resume\");\r\n        btPause.setIcon(ImageUtils.resizeIcon(new ImageIcon(getClass().getResource(\"/resources/pausa.png\")), 20, 20));\r\n        btPause.addActionListener(new java.awt.event.ActionListener() {\r\n            public void actionPerformed(java.awt.event.ActionEvent evt) {\r\n                btPauseActionPerformed(evt);\r\n            }\r\n        });\r\n\r\n\r\n        btRestart.setSize(100,100);\r\n        btRestart.setText(\"Restart\");\r\n        btRestart.setIcon(ImageUtils.resizeIcon(new ImageIcon(getClass().getResource(\"/resources/restart.png\")), 20, 20));\r\n        btRestart.addActionListener(new java.awt.event.ActionListener() {\r\n            public void actionPerformed(java.awt.event.ActionEvent evt) {\r\n                try {\r\n                    arkanoidGame1.loadLevel(\"puzzle.txt\");\r\n                    btPause.setText(\"Resume\");\r\n                } catch (IOException e) {\r\n                    throw new RuntimeException(e);\r\n                }\r\n            }\r\n        });\r\n\r\n\r\n        btNewLevel.setText(\"New\");\r\n        btNewLevel.setEnabled(false);\r\n        btNewLevel.addActionListener(new java.awt.event.ActionListener() {\r\n            public void actionPerformed(java.awt.event.ActionEvent evt) {\r\n                BtNewLevelPerformed(evt);\r\n            }\r\n        });\r\n//\r\n\r\n\r\n        volume.setMaximumSize(new Dimension(100,50));\r\n        volume.setValue(100);\r\n        volume.setToolTipText(\"Volume\");\r\n        volume.addChangeListener(new ChangeListener() {\r\n            public void stateChanged(ChangeEvent e) {\r\n                System.out.println(volume.getValue());\r\n                SoundUtils.setVolume(music, volume.getValue() * 0.01);\r\n            }\r\n        });\r\n\r\n\r\n        volumeText.setText(\"Volume\");\r\n\r\n        //CONFIGURACAO LAYOUT\r\n\r\n\r\n        setForeground(Color.RED);\r\n        GroupLayout layout = new GroupLayout(getContentPane());\r\n        getContentPane().setLayout(layout);\r\n        layout.setHorizontalGroup(\r\n            layout.createParallelGroup(GroupLayout.Alignment.LEADING)\r\n            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()\r\n                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)\r\n                    .addComponent(btSave)\r\n                    .addComponent(btLoad)\r\n                        .addComponent(volumeText)\r\n                        .addComponent(volume)\r\n                    .addComponent(btPause)\r\n                        .addComponent(btNewLevel)\r\n                        .addComponent(btRestart))\r\n                .addGap(18, 18, 18)\r\n                .addComponent(arkanoidGame1, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))\r\n\r\n\r\n        );\r\n        layout.setVerticalGroup(\r\n            layout.createParallelGroup(GroupLayout.Alignment.LEADING)\r\n            .addGroup(layout.createSequentialGroup()\r\n                    .addGap(5,5,5)\r\n                .addComponent(btSave)\r\n                .addComponent(btLoad)\r\n                    .addComponent(volumeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)\r\n                    .addComponent(volume)\r\n                    .addGap(170, 170, 170)\r\n                    .addComponent(btRestart)\r\n                    .addComponent(btPause)\r\n                    .addGap(50, 50, 50)\r\n                    .addComponent(btNewLevel)\r\n                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))\r\n            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()\r\n                .addGap(0, 6, Short.MAX_VALUE)\r\n                .addComponent(arkanoidGame1, GroupLayout.PREFERRED_SIZE, 432, GroupLayout.PREFERRED_SIZE))\r\n\r\n        );\r\n        setResizable(false);\r\n\r\n        pack();\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public void dispose() {\r\n        temporizador.interrupt();\r\n        jogador.setTimePlayed(temporizador.getTempo());\r\n        System.out.println(\"Tempo jogado -> \" + jogador.getTimePlayed());\r\n        music.stop();\r\n        super.dispose();\r\n    }\r\n\r\n\r\n\r\n    // METODOS BOTOES\r\n\r\n    private void BtNewLevelPerformed(java.awt.event.ActionEvent evt) {\r\n        try {\r\n            arkanoidGame1.continueGame();\r\n            arkanoidGame1.loadLevel(FileUtils.createPuzzle(\"puzzle.txt\"));\r\n\r\n        } catch (IOException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n    }\r\n\r\n    private void btPauseActionPerformed(java.awt.event.ActionEvent evt) {\r\n        try {\r\n            if (arkanoidGame1.timer.isRunning()){\r\n                music.loop(10);\r\n                this.btPause.setText(\"Resume\");\r\n                arkanoidGame1.timer.stop();\r\n                arkanoidGame1.running = false;\r\n                return;\r\n            }\r\n            music.start();\r\n            this.btPause.setText(\" Pause  \");\r\n            arkanoidGame1.timer.start();\r\n            arkanoidGame1.running = true;\r\n            btNewLevel.setEnabled(true);\r\n        }\r\n        catch (Exception ex) {\r\n            Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n    private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed\r\n        arkanoidGame1.stopGame();\r\n\r\n        JFileChooser fc = new JFileChooser(\".\");\r\n        int result = fc.showSaveDialog(this);\r\n        if( result == JFileChooser.APPROVE_OPTION){\r\n            try {\r\n                arkanoidGame1.saveGame(fc.getSelectedFile().getAbsolutePath());\r\n                arkanoidGame1.continueGame();\r\n            } catch (Exception ex) {\r\n                JOptionPane.showMessageDialog(this, ex.getMessage());\r\n                Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);\r\n            }\r\n            \r\n        }\r\n    }\r\n\r\n    private void btLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoadActionPerformed\r\n        arkanoidGame1.stopGame();\r\n        JFileChooser fc = new JFileChooser(\".\");\r\n        int result = fc.showOpenDialog(this);\r\n        if( result == JFileChooser.APPROVE_OPTION){\r\n            try {\r\n                arkanoidGame1.loadGame(fc.getSelectedFile().getAbsolutePath());\r\n                arkanoidGame1.continueGame();\r\n                btRestart.setEnabled(false);\r\n\r\n            } catch (Exception ex) {\r\n                JOptionPane.showMessageDialog(this, ex.getMessage());\r\n                Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);\r\n            }\r\n            \r\n        }\r\n    }\r\n\r\n\r\n      /*  public  String Time_tracker(){\r\n    Timer timer = new Timer();\r\n            return timer.toString();\r\n            timer.start();\r\n        }*/\r\n\r\n    // Variables declaration\r\n    private ArkanoidGame arkanoidGame1;\r\n    private JButton btLoad;\r\n    private JButton btSave;\r\n    private JButton btPause;\r\n    private JButton btRestart;\r\n    private JButton btNewLevel;\r\n    private Clip music;\r\n    private JSlider volume;\r\n    private JLabel volumeText;\r\n    private JLabel Time_display;\r\n    // End of variables declaration\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MyArkanoid/playGame.java b/src/MyArkanoid/playGame.java
+--- a/src/MyArkanoid/playGame.java	(revision 2e0528226c12bb6fceca585bd4ac3185bc343aaf)
++++ b/src/MyArkanoid/playGame.java	(date 1748557656597)
+@@ -57,7 +57,7 @@
+         btNewLevel = new JButton();
+         volume = new JSlider();
+         volumeText = new JLabel();
+-
++        Display_Score= new JTextField();
+         Time_display = new JLabel();
+ 
+         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+@@ -110,7 +110,15 @@
+             }
+         });
+ //
+-
++        Time_display.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
++        Time_display.setBackground(Color.BLACK);
++        Time_display.setForeground(Color.RED);
++        //
++//
++        Display_Score.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
++        Display_Score.setBackground(Color.BLACK);
++        Display_Score.setForeground(Color.YELLOW);
++        //
+ 
+         volume.setMaximumSize(new Dimension(100,50));
+         volume.setValue(100);
+@@ -139,6 +147,12 @@
+                     .addComponent(btLoad)
+                         .addComponent(volumeText)
+                         .addComponent(volume)
++                        //
++                        .addComponent(Time_display)
++                        //
++                        //
++                        .addComponent(Display_Score)
++                        //
+                     .addComponent(btPause)
+                         .addComponent(btNewLevel)
+                         .addComponent(btRestart))
+@@ -156,6 +170,12 @@
+                     .addComponent(volumeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                     .addComponent(volume)
+                     .addGap(170, 170, 170)
++                    //
++                    .addComponent(Time_display)
++                    //
++                    //
++                    .addComponent(Display_Score)
++                    //
+                     .addComponent(btRestart)
+                     .addComponent(btPause)
+                     .addGap(50, 50, 50)
+@@ -271,5 +291,6 @@
+     private JSlider volume;
+     private JLabel volumeText;
+     private JLabel Time_display;
++    static JTextField Display_Score;
+     // End of variables declaration
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"824d2ff9-7e68-4ace-a6af-2a19b79e12e4\" name=\"Changes\" comment=\"Added leaderboard and some functionality&#10;New user class to deal with the player\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/MyArkanoid/Temporizador.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Menu.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Menu.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/MyArkanoid/SelectUser.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/MyArkanoid/SelectUser.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/MyArkanoid/UserInterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/MyArkanoid/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/MyArkanoid/playGame.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/MyArkanoid/playGame.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\"\r\n  }\r\n}]]></component>\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Added leaderboard and some functionality&#10;New user class to deal with the player\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748550726387</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748550726387</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added leaderboard and some functionality&#10;New user class to deal with the player\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added leaderboard and some functionality&#10;New user class to deal with the player\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2e0528226c12bb6fceca585bd4ac3185bc343aaf)
++++ b/.idea/workspace.xml	(date 1748559734793)
+@@ -5,13 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="824d2ff9-7e68-4ace-a6af-2a19b79e12e4" name="Changes" comment="Added leaderboard and some functionality&#10;New user class to deal with the player">
+-      <change afterPath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -26,14 +21,63 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "aluno23785"
++  }
++}]]></component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/amvvafonso/Arkanoid.git",
++    "accountId": "a15a3d9f-e742-4dba-9669-f2863f5ba4e8"
++  }
++}]]></component>
++  <component name="ProjectColorInfo"><![CDATA[{
++  "associatedIndex": 1
++}]]></component>
++  <component name="ProjectId" id="2xmy7d5u9B5ULuqQv0AvH7EHlff" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+     "Application.Main.executor": "Run",
++    "Application.Unnamed.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
+     "git-widget-placeholder": "main",
+-    "node.js.selected.package.tslint": "(autodetect)"
++    "ignore.virus.scanning.warn.message": "true",
++    "last_opened_file_path": "C:/Users/jpgra/Desktop/Arknoid_Final/Arkanoid",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "two.files.diff.last.used.file": "C:/Users/jpgra/Desktop/Code Projects/Backup_Arkanoid_1/Arkanoid/src/MyArkanoid/playGame.java",
++    "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
++  <component name="RunManager">
++    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="Main" />
++      <module name="Arkanoid-27502_23875" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++  </component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
++        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
++      </set>
++    </attachedChunks>
++  </component>
+   <component name="TaskManager">
+     <task id="LOCAL-00001" summary="Added leaderboard and some functionality&#10;New user class to deal with the player">
+       <option name="closed" value="true" />
+@@ -42,9 +86,20 @@
+       <option name="presentableId" value="LOCAL-00001" />
+       <option name="project" value="LOCAL" />
+       <updated>1748550726387</updated>
++    </task>
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="824d2ff9-7e68-4ace-a6af-2a19b79e12e4" name="Changes" comment="Added leaderboard and some functionality&#10;New user class to deal with the player" />
++      <created>1748557377078</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1748557377078</updated>
++      <workItem from="1748557378197" duration="1565000" />
+     </task>
+     <option name="localTasksCounter" value="2" />
+     <servers />
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Added leaderboard and some functionality&#10;New user class to deal with the player" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_20\" default=\"true\" project-jdk-name=\"20\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 2e0528226c12bb6fceca585bd4ac3185bc343aaf)
++++ b/.idea/misc.xml	(date 1748557379931)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
