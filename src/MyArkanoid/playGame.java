@@ -20,6 +20,7 @@ public class playGame extends JFrame {
 
     private User jogador;
     Temporizador temporizador;
+    private static int Number_of_restarts=0;
     public playGame(User user) {
         try {
 
@@ -93,6 +94,8 @@ public class playGame extends JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
                   //  arkanoidGame1.ArkanoidGame
+                    Number_of_restarts++;
+                    arkanoidGame1.Getting_to_slow(Number_of_restarts);
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
                 } catch (IOException e) {

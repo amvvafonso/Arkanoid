@@ -20,7 +20,7 @@ public class Temporizador extends Thread implements Runnable {
            while (true){
                tempo++;
                Thread.sleep(1000);
-               System.out.println(tempo);
+              // System.out.println(tempo);
            }
         }
         catch (InterruptedException e) {

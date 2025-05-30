@@ -266,7 +266,11 @@ public class ArkanoidGame extends JComponent
         }
 
     }
-
+public void Getting_to_slow(int Number_of_restarts){
+        if(Number_of_restarts>4){
+            System.exit(0);
+        }
+}
     public void checkIfWin(Brick brick){
         try {
             BricksToRemove.add(brick);
