@@ -15,16 +15,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class playGame extends JFrame {
+public class playGame extends JFrame{
 
 
     private User jogador;
-    Temporizador temporizador;
+    private Temporizador temporizador;
+
+    ArkanoidGame arkanoidGame1 = new ArkanoidGame();
     public playGame(User user) {
         try {
-            temporizador = new Temporizador();
-            temporizador.start();
-
             this.jogador = user;
             initComponents();
             arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
@@ -45,11 +44,11 @@ public class playGame extends JFrame {
         music = SoundUtils.playSound("music");
         music.loop(500);
 
+        temporizador = new Temporizador();
 
         System.out.println("Selected user was - " + jogador.getUsername());
         //CONFGURACAO BOTOES
 
-        arkanoidGame1 = new ArkanoidGame();
         btSave = new JButton();
         btLoad = new JButton();
         btPause = new JButton();
@@ -58,7 +57,7 @@ public class playGame extends JFrame {
         volume = new JSlider();
         volumeText = new JLabel();
 
-        Time_display = new JLabel();
+
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -175,6 +174,8 @@ public class playGame extends JFrame {
 
 
 
+
+
     @Override
     public void dispose() {
         temporizador.interrupt();
@@ -254,14 +255,8 @@ public class playGame extends JFrame {
     }
 
 
-      /*  public  String Time_tracker(){
-    Timer timer = new Timer();
-            return timer.toString();
-            timer.start();
-        }*/
 
     // Variables declaration
-    private ArkanoidGame arkanoidGame1;
     private JButton btLoad;
     private JButton btSave;
     private JButton btPause;
@@ -270,6 +265,9 @@ public class playGame extends JFrame {
     private Clip music;
     private JSlider volume;
     private JLabel volumeText;
-    private JLabel Time_display;
+
     // End of variables declaration
+
+
+
 }

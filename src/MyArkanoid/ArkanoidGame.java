@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,8 @@ public class ArkanoidGame extends JComponent
     private ArrayList<String> passover= ImageUtils.Background_img_list();
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
 
+
+
     Ball ball;
     ArrayList<Brick> bricks;
     Paddle pad;
@@ -39,9 +42,7 @@ public class ArkanoidGame extends JComponent
     List<Brick> BricksToRemove = new ArrayList<>();
     Boolean powerUsed = false;
     Timer timer;
-    String Time_display;
-    int counter = 0;
-
+    private int counter = 0;
 
     private User jogador;
 
@@ -83,8 +84,7 @@ public class ArkanoidGame extends JComponent
         this.ball.vx = 2;
         this.ball.vy = -2;
     }
-    
-    
+
     public void loadGame(String path) throws Exception{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
@@ -93,8 +93,7 @@ public class ArkanoidGame extends JComponent
         this.bricks = (ArrayList<Brick>) in.readObject();
         in.close();
     }
-    
-    
+
     public void stopGame(){
         running = false;
         timer.stop();
@@ -138,7 +137,9 @@ public class ArkanoidGame extends JComponent
 
     public ArkanoidGame() {
 
+        //Tempo de jogo
 
+        //Inicio
         start();
         timer = new Timer(10, this);
         timer.start();
@@ -178,7 +179,6 @@ public class ArkanoidGame extends JComponent
             gr.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
         }
 
-
         ball.paint(gr);
 
 
@@ -189,6 +189,8 @@ public class ArkanoidGame extends JComponent
 
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -198,7 +200,8 @@ public class ArkanoidGame extends JComponent
                     return;
                 }
 
-                ball.move(this.getBounds());
+
+                ball.move(getBounds());
                 for (Brick brick : bricks) {
                     if (brick.intersects(ball) && brick.isVisible) {
                         if (brick.getMyColor().equals(Color.GRAY)) {
@@ -220,7 +223,7 @@ public class ArkanoidGame extends JComponent
                         else if (!brick.getMyColor().equals(Color.GRAY)) {
 
                             if (brick.getMyColor().equals(Color.YELLOW)) {
-                                if (!powerUsed) {
+                                if (ball.width != 5) {
                                     powerUsed = true;
                                     ball.width -= 5;
                                     ball.height -= 5;
@@ -260,7 +263,6 @@ public class ArkanoidGame extends JComponent
 
             pad.collide(ball);
 
-
             repaint();
         } catch (ArkanoidException ex) {
             if (this.isDisplayable()) {
@@ -275,7 +277,7 @@ public class ArkanoidGame extends JComponent
     public void checkIfWin(Brick brick){
         try {
             BricksToRemove.add(brick);
-            if (BricksToRemove.size() == counter + 1){
+            if (BricksToRemove.size() == counter){
                 if (this.isDisplayable()){
                 new ArkanoidException("Ganhou").showMessage();
                     timer.stop();

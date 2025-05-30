@@ -1,8 +1,18 @@
 package MyArkanoid;
 
+import javax.swing.*;
+
 public class Temporizador extends Thread implements Runnable {
 
     private long tempo;
+
+    public Temporizador() {
+        this.start();
+    }
+
+    public Temporizador(String semComecar) {
+
+    }
 
     @Override
     public void run() {
@@ -21,5 +31,6 @@ public class Temporizador extends Thread implements Runnable {
     public long getTempo() {
         return tempo;
     }
+
 
 }

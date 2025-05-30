@@ -53,8 +53,8 @@ public class SelectUser extends JFrame {
                 dispose();
                 for (User user : UserController.getAllUsers()){
                     if (user.getNumAluno().equals(selectUser.getSelectedItem())) {
-                        playGame playGame = new playGame(user);
-                        playGame.setVisible(true);
+                        playGame jogo = new playGame(user);
+                        jogo.setVisible(true);
                     }
                 }
 

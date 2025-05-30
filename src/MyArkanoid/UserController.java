@@ -353,7 +353,6 @@ public class UserController extends JFrame {
                         String data = sc.nextLine();
                         String[] lstData = data.split("-");
                         if (lstData[1].equals(user.getNumAluno())) {
-                            String[] tempo = new String[]{lstData[0],lstData[1], String.valueOf(user.getTimePlayed()), lstData[3]};
                             Files.write(Paths.get(tempFile.getName()), (user.toString() + "\n").getBytes(), StandardOpenOption.APPEND);;
                         }
                         else {
