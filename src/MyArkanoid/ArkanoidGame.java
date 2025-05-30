@@ -31,7 +31,7 @@ public class ArkanoidGame extends JComponent
     private int img_number=0;
     private ArrayList<String> passover= ImageUtils.Background_img_list();
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
-    private static int Score=0;
+    public int Score=0;
     Ball ball;
     ArrayList<Brick> bricks;
     Paddle pad;
@@ -42,7 +42,7 @@ public class ArkanoidGame extends JComponent
    static String Time_display;
     static String Time_display_minutes;
     int counter = 0;
-
+    Temporizador temporizador;
 
     private User jogador;
 
@@ -126,6 +126,7 @@ public class ArkanoidGame extends JComponent
 
     public ArkanoidGame() {
 
+        temporizador = new Temporizador();
 
         start();
         timer = new Timer(10, this);
@@ -240,6 +241,7 @@ public class ArkanoidGame extends JComponent
                             brick.isVisible = false;
                             //
                             Score++;
+                            playGame.Display_time.setText(temporizador.getTempo()+"");
                             playGame.Display_Score.setText("Score: "+Score);
                             //
                             checkIfWin(brick);

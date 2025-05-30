@@ -198,6 +198,7 @@ public class playGame extends JFrame {
     public void dispose() {
         temporizador.interrupt();
         jogador.setTimePlayed(jogador.getTimePlayed() + temporizador.getTempo());
+        jogador.setPontos(arkanoidGame1.Score);
         UserController.updateUser(jogador);
         music.stop();
         super.dispose();
