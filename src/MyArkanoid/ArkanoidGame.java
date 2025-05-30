@@ -31,7 +31,7 @@ public class ArkanoidGame extends JComponent
     private int img_number=0;
     private ArrayList<String> passover= ImageUtils.Background_img_list();
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
-
+    private static int Score=0;
     Ball ball;
     ArrayList<Brick> bricks;
     Paddle pad;
@@ -39,7 +39,8 @@ public class ArkanoidGame extends JComponent
     List<Brick> BricksToRemove = new ArrayList<>();
     Boolean powerUsed = false;
     Timer timer;
-    String Time_display;
+   static String Time_display;
+    static String Time_display_minutes;
     int counter = 0;
 
 
@@ -104,19 +105,6 @@ public class ArkanoidGame extends JComponent
         running = true;
         timer.start();
     }
-
-    public BufferedImage backimage_recreation(int img_number) {
-        for(int j=0;j<passover.size();j++){
-            try {
-                imgBack_list.add(j,ImageUtils.loadImage(passover.get(j)) );
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        return imgBack_list.get(img_number);
-    }
-
     public void image_fade() {
         //imgBack1 = ImageUtils.loadImage("/images/background1.png");
         for (String path : passover) {
@@ -141,6 +129,7 @@ public class ArkanoidGame extends JComponent
 
         start();
         timer = new Timer(10, this);
+        show_time();
         timer.start();
         running = true;
         image_fade();
@@ -167,8 +156,25 @@ public class ArkanoidGame extends JComponent
         pad = new Paddle(Color.RED, 200, 180, 100, 40);
 
     }
+    //
+    public void show_time()  {
+        long start_time=System.currentTimeMillis();
+        final long[] last_second = {0};
+        new Thread(() -> {
+            while(true){
+                long current_time=(System.currentTimeMillis()-start_time)/1000;
+                if(current_time > last_second[0]){
+                    Time_display=current_time%60+"";
+                    Time_display_minutes=""+(current_time/60);
+                    playGame.Display_time.setText("Play Time: "+Time_display_minutes+" : "+Time_display);
+                    // System.out.println(Time_display);
+                    last_second[0] =current_time;
+                }
+            }
+        }).start();
 
-
+    }
+    //
     public void paintComponent(Graphics gr) {
 
         if (imgBack != null) {
@@ -250,6 +256,10 @@ public class ArkanoidGame extends JComponent
                                 ball.vx *= -1;
                             }
                             brick.isVisible = false;
+                            //
+                            Score++;
+                            playGame.Display_Score.setText("Score: "+Score);
+                            //
                             checkIfWin(brick);
                             SoundUtils.playSound("pop");
 

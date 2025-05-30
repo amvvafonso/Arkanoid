@@ -57,8 +57,8 @@ public class playGame extends JFrame {
         btNewLevel = new JButton();
         volume = new JSlider();
         volumeText = new JLabel();
-
-        Time_display = new JLabel();
+        Display_Score= new JTextField();
+        Display_time = new JTextField();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -110,7 +110,15 @@ public class playGame extends JFrame {
             }
         });
 //
-
+        Display_time.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
+        Display_time.setBackground(Color.BLACK);
+        Display_time.setForeground(Color.RED);
+        //
+//
+        Display_Score.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
+        Display_Score.setBackground(Color.BLACK);
+        Display_Score.setForeground(Color.YELLOW);
+        //
 
         volume.setMaximumSize(new Dimension(100,50));
         volume.setValue(100);
@@ -139,6 +147,12 @@ public class playGame extends JFrame {
                     .addComponent(btLoad)
                         .addComponent(volumeText)
                         .addComponent(volume)
+                        //
+                        .addComponent(Display_time)
+                        //
+                        //
+                        .addComponent(Display_Score)
+                        //
                     .addComponent(btPause)
                         .addComponent(btNewLevel)
                         .addComponent(btRestart))
@@ -156,6 +170,12 @@ public class playGame extends JFrame {
                     .addComponent(volumeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(volume)
                     .addGap(170, 170, 170)
+                    //
+                    .addComponent(Display_time)
+                    //
+                    //
+                    .addComponent(Display_Score)
+                    //
                     .addComponent(btRestart)
                     .addComponent(btPause)
                     .addGap(50, 50, 50)
@@ -270,6 +290,7 @@ public class playGame extends JFrame {
     private Clip music;
     private JSlider volume;
     private JLabel volumeText;
-    private JLabel Time_display;
+    static JTextField Display_time;
+    static JTextField Display_Score;
     // End of variables declaration
 }
