@@ -24,7 +24,8 @@ import java.awt.*;
  * Created on 06/05/2025, 17:50:01 
  * @author manso - computer
  */
-public class Ball  extends GameObject{
+public class Ball  extends Animation{
+
 
 
     int vx = 3;
@@ -33,9 +34,16 @@ public class Ball  extends GameObject{
     public Ball(Color myColor, int x, int y, int radius) {
         super(ImageUtils.Ball_color(),x, y, radius, radius);
     }
-    
-    
-    
+
+    public static String[] fire_ball_imgs = {
+            "/images/paddle0.png",
+            "/images/paddle1.png",
+            "/images/paddle2.png"};
+
+    public void loadfire_ball_imgs(){
+        load(fire_ball_imgs);
+    }
+
     public void paint(Graphics gr){
        gr.setColor(myColor);
        gr.fillOval(x, y, width, height);
