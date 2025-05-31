@@ -12,7 +12,6 @@
     <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="bug fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tempFile.txt" afterDir="false" />
     </list>
@@ -31,18 +30,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "aluno23785"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;aluno23785&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/amvvafonso/Arkanoid.git",
-    "accountId": "a15a3d9f-e742-4dba-9669-f2863f5ba4e8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/amvvafonso/Arkanoid.git&quot;,
+    &quot;accountId&quot;: &quot;a15a3d9f-e742-4dba-9669-f2863f5ba4e8&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/Timer.java" root0="SKIP_INSPECTION" />
   </component>
@@ -58,6 +57,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.Unnamed.executor": "Run",
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -68,6 +68,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "two.files.diff.last.used.file": "C:/Users/jpgra/Desktop/Arknoid_Final/src/MyArkanoid/Ball.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -121,7 +122,8 @@
       <option name="presentableId" value="Default" />
       <updated>1748610501879</updated>
       <workItem from="1748610503486" duration="6739000" />
-      <workItem from="1748619303007" duration="24620000" />
+      <workItem from="1748619303007" duration="24666000" />
+      <workItem from="1748699021858" duration="5211000" />
     </task>
     <task id="LOCAL-00004" summary="bug fixes">
       <option name="closed" value="true" />
@@ -155,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748662765672</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748664478794</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748664478794</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

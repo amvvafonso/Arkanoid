@@ -46,6 +46,9 @@ public class Ball  extends Animation{
     }
 
     public void paint(Graphics gr){
+        //
+         gr.drawImage(frames[visibleFrame], x-12, y-7, width+15, height+15, null);
+        //
        gr.setColor(myColor);
        gr.fillOval(x, y, width, height);
        gr.setColor(Color.BLACK);
