@@ -11,7 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="bug fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tempFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748610501879</updated>
       <workItem from="1748610503486" duration="6739000" />
-      <workItem from="1748619303007" duration="22881000" />
+      <workItem from="1748619303007" duration="24620000" />
     </task>
     <task id="LOCAL-00004" summary="bug fixes">
       <option name="closed" value="true" />
@@ -144,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748659241712</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748662765672</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748662765672</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

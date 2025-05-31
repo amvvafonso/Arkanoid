@@ -31,14 +31,15 @@ public class Ball  extends Animation{
     int vx = 3;
     int vy = 2;
 
+    public static String[] fire_ball_imgs = {
+            "/images/ball-fire0.png",
+            "/images/ball-fire1.png",
+            "/images/ball-fire2.png"};
+
     public Ball(Color myColor, int x, int y, int radius) {
         super(ImageUtils.Ball_color(),x, y, radius, radius);
+        load(fire_ball_imgs);
     }
-
-    public static String[] fire_ball_imgs = {
-            "/images/paddle0.png",
-            "/images/paddle1.png",
-            "/images/paddle2.png"};
 
     public void loadfire_ball_imgs(){
         load(fire_ball_imgs);
@@ -48,7 +49,7 @@ public class Ball  extends Animation{
        gr.setColor(myColor);
        gr.fillOval(x, y, width, height);
        gr.setColor(Color.BLACK);
-       gr.drawOval(x, y, width, height); 
+       gr.drawOval(x, y, width, height);
     }
     
     public void move(){

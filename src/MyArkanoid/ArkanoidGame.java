@@ -89,6 +89,7 @@ public class ArkanoidGame extends JComponent
     public void loadGame(String path) throws Exception{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
+        this.ball.loadfire_ball_imgs();
         this.pad = (Paddle) in.readObject();
         this.pad.loadImages();
         this.bricks = (ArrayList<Brick>) in.readObject();
