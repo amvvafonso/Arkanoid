@@ -1,11 +1,10 @@
 package MyArkanoid;
 
-import javax.swing.*;
-
 public class Temporizador extends Thread implements Runnable {
 
-    private static long tempo;
-
+    private long tempo = 0;
+    private long max = 0;
+    private boolean completed = false;
     public Temporizador() {
         this.start();
     }
@@ -18,9 +17,13 @@ public class Temporizador extends Thread implements Runnable {
     public void run() {
         try {
            while (true){
+               if(tempo == max && max != 0){
+                   this.completed = true;
+                   System.out.println("Completed");
+                   interrupt();
+               }
                tempo++;
                Thread.sleep(1000);
-              // System.out.println(tempo);
            }
         }
         catch (InterruptedException e) {
@@ -28,9 +31,7 @@ public class Temporizador extends Thread implements Runnable {
         }
     }
 
-    public static long getTempo() {
-        return tempo;
-    }
+
 
     public static void show_time()  {
         long start_time=System.currentTimeMillis();
@@ -48,5 +49,29 @@ public class Temporizador extends Thread implements Runnable {
             }
         }).start();
 
+    }
+
+    public boolean hasTimePassed(long i){
+        if (tempo == i){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
+    public long getTempo() {
+        return this.tempo;
+    }
+
+    public void setMax(long max) {
+        this.max = max;
+    }
+
+    public boolean isCompleted() {
+        return completed;
     }
 }

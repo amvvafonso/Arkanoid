@@ -113,9 +113,9 @@ public class playGame extends JFrame {
             }
         });
 //
-        Display_time.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
-        Display_time.setBackground(Color.BLACK);
-        Display_time.setForeground(Color.RED);
+        Display_time.setFont(new java.awt.Font("Serif",Font.BOLD,  12));
+//        Display_time.setBackground(Color.BLACK);
+//        Display_time.setForeground(Color.RED);
         //
 //
         Display_Score.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
@@ -124,7 +124,7 @@ public class playGame extends JFrame {
         //
 
         volume.setMaximumSize(new Dimension(100,50));
-        volume.setValue(100);
+        volume.setValue(50);
         volume.setToolTipText("Volume");
         volume.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {

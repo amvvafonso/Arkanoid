@@ -27,7 +27,6 @@ import java.awt.*;
 public class Ball  extends Animation{
 
 
-
     int vx = 3;
     int vy = 2;
 
@@ -38,23 +37,27 @@ public class Ball  extends Animation{
 
     public Ball(Color myColor, int x, int y, int radius) {
         super(ImageUtils.Ball_color(),x, y, radius, radius);
-        load(fire_ball_imgs);
     }
 
-    public void loadfire_ball_imgs(){
-        load(fire_ball_imgs);
-    }
 
     public void paint(Graphics gr){
-        //
-         gr.drawImage(frames[visibleFrame], x-12, y-7, width+15, height+15, null);
-        //
        gr.setColor(myColor);
        gr.fillOval(x, y, width, height);
        gr.setColor(Color.BLACK);
        gr.drawOval(x, y, width, height);
     }
-    
+
+    public void paintFire(Graphics gr){
+        load(fire_ball_imgs);
+        gr.setColor(myColor);
+        gr.fillOval(x, y, width, height);
+        gr.setColor(Color.BLACK);
+        gr.drawOval(x, y, width, height);
+        gr.drawImage(frames[visibleFrame], x-7, y-15, width+15, height+15, null);
+    }
+
+
+
     public void move(){
         translate(vx, vy);
     }
@@ -90,7 +93,7 @@ public class Ball  extends Animation{
         }
         
     }
-private static final long serialVersionUID =1;
+
 
 
 }
