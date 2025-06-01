@@ -74,13 +74,16 @@ public class ArkanoidGame extends JComponent
                 else if (txt.get(y).charAt(x) == 'X'){
                     bricks.add( new Brick(Color.YELLOW, x*dimX,y * dimY, dimX, dimY));
                     counter++;
+                } /*Bomb Brick*/else if (txt.get(y).charAt(x) == 'B'){
+                    bricks.add( new Brick(Color.ORANGE, x*dimX,y * dimY, dimX, dimY));
+                    counter++;
                 }
 
                 
             }
         }
         this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
-        this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 10);
+        this.ball = new Ball(Color.yellow, getWidth()/4,  getHeight()-60, 10);
         this.ball.vx = 2;
         this.ball.vy = -2;
     }
@@ -89,6 +92,7 @@ public class ArkanoidGame extends JComponent
     public void loadGame(String path) throws Exception{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
+        this.ball.loadfire_ball_imgs();
         this.pad = (Paddle) in.readObject();
         this.pad.loadImages();
         this.bricks = (ArrayList<Brick>) in.readObject();
@@ -130,6 +134,7 @@ public class ArkanoidGame extends JComponent
 
         start();
         timer = new Timer(10, this);
+        Temporizador.show_time();
         timer.start();
         running = true;
         image_fade();
@@ -188,7 +193,9 @@ public class ArkanoidGame extends JComponent
                 }
 
                 ball.move(this.getBounds());
+                int measure_iteration_count = 0;
                 for (Brick brick : bricks) {
+                    measure_iteration_count++;
                     if (brick.intersects(ball) && brick.isVisible) {
                         if (brick.getMyColor().equals(Color.GRAY)) {
 
@@ -225,7 +232,75 @@ public class ArkanoidGame extends JComponent
                                     powerUsed = false;
                                 }
                             }
+                            //Bomb_Brick
+                             boolean orange=brick.getMyColor().equals(Color.ORANGE);
+                          if (orange) {
+                                int X_location_of_orange_brick= brick.x;
+                                int Y_location_of_orange_brick= brick.y;
 
+                                  //    System.exit(0);
+
+
+
+                      int check_x_plus_width_coordiantes_for_brick=brick.x+brick.width;
+                      int check_y_plus_height_coordiantes_for_brick=brick.y+brick.height;
+
+       if (brick.getX() <check_x_plus_width_coordiantes_for_brick) {
+
+          // System.out.println("width_de_um_brick:"+brick.width+" coordenadas_deste_brick: "+brick.getX()+" coordenadas_do_proximo_brick_em_termos_de_x_positivo: "+check_x_plus_width_coordiantes_for_brick);
+        //  System.out.println("brick anterior: "+bricks.get(measure_iteration_count-1)+"\n"+"este brick: "+bricks.get(measure_iteration_count)+"\n"+"proximo_brick: "+bricks.get(measure_iteration_count+1));
+
+
+       }
+
+                              int h=bricks.indexOf(bricks.getLast());
+                              int search_for_top_brick = bricks.indexOf(brick);
+                              //System.out.println("current_brick_hit--"+search_for_top_brick);
+                              //System.out.println("last_brick_i--"+h);
+                              try{
+                                  if (bricks.get(measure_iteration_count+1).getX() >check_x_plus_width_coordiantes_for_brick||bricks.get(measure_iteration_count-1).getX() <check_x_plus_width_coordiantes_for_brick/*||bricks.get(measure_iteration_count-1).getY() <check_y_plus_height_coordiantes_for_brick*/){
+                                  System.out.println("yo");
+                                      bricks.get(measure_iteration_count).isVisible = false;
+                                      bricks.get(measure_iteration_count-2).isVisible = false;
+                                     // bricks.get(measure_iteration_count+10).isVisible = false;
+
+                                      for(int v=0;v<measure_iteration_count;v++){//Aqui vai detetar qual é o brick em cima deste
+                                     //     System.out.println("h--y->"+bricks.get(h).getY()+"h--x->"+bricks.get(h).getX()+"\n"+"v--y->"+bricks.get(v).getY()+"v--x->"+bricks.get(v).getY());
+                                          if(bricks.get(measure_iteration_count).getY()==bricks.get(v).getY()+brick.height){
+                                              if(bricks.get(measure_iteration_count).getX()==bricks.get(v).getX()){
+                                                  System.out.println(bricks.get(v-1));
+                                                  bricks.get(v-1).isVisible = false;
+                                              }
+
+
+                                          }
+                                      }
+
+
+
+                              }
+                              }
+                              catch (IndexOutOfBoundsException f){
+                                  System.out.println("fim de list");
+                              }
+
+
+
+
+
+                            }
+
+//Coloca o comment antes desta linha
+
+
+
+
+
+
+
+
+
+                            //
                             if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
                                 ball.vx *= -1;
                             } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
@@ -241,8 +316,8 @@ public class ArkanoidGame extends JComponent
                             brick.isVisible = false;
                             //
                             Score++;
-                            playGame.Display_time.setText(temporizador.getTempo()+"");
                             playGame.Display_Score.setText("Score: "+Score);
+                            //playGame.Display_time=Temporizador.getTempo();
                             //
                             checkIfWin(brick);
                             SoundUtils.playSound("pop");
@@ -265,7 +340,11 @@ public class ArkanoidGame extends JComponent
         }
 
     }
-
+public void Getting_to_slow(int Number_of_restarts){
+        if(Number_of_restarts>4){
+            System.exit(0);
+        }
+}
     public void checkIfWin(Brick brick){
         try {
             BricksToRemove.add(brick);
@@ -280,6 +359,8 @@ public class ArkanoidGame extends JComponent
             System.out.println(es.toString());
         }
     }
+
+
 
     @Override
     public void mouseDragged(MouseEvent e) {

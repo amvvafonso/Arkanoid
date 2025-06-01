@@ -31,7 +31,8 @@ public class LevelUtils {
                         randomLevel += " ";
                     }
                     else if (value > 3 && value < 35){
-                        randomLevel += "#";
+                       // randomLevel += "#";
+                        randomLevel += "B";
                     }
                     else if (value > 35 && value < 39){
                         randomLevel += "%";
@@ -39,6 +40,9 @@ public class LevelUtils {
                     else if (value == 39){
                         randomLevel += "X";
                     }
+               /*     else if (value == 9 && value < 39){
+                        randomLevel += "B";
+                    }*/
 
                 }
                 randomLevel += "\n";

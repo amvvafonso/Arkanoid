@@ -160,5 +160,12 @@ public class ImageUtils {
         //return background_img_files_list.get(ii);
         return background_img_files_list;
     }
+
+    public static Color Ball_color() {
+
+
+
+        return  RandomColor();
+    }
      //
 }

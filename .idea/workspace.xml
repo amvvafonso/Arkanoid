@@ -9,14 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="bug fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="added fireball">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaderBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leaderBoard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/puzzle.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tempFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;aluno23785&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/amvvafonso/Arkanoid.git&quot;,
+    &quot;accountId&quot;: &quot;a15a3d9f-e742-4dba-9669-f2863f5ba4e8&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/Timer.java" root0="SKIP_INSPECTION" />
   </component>
@@ -49,11 +59,19 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.Unnamed.executor": "Run",
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/jpgra/Desktop/Arknoid_Final",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "two.files.diff.last.used.file": "C:/Users/jpgra/Desktop/Arknoid_Final/src/MyArkanoid/Ball.java",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -64,6 +82,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -85,29 +111,79 @@
     </task>
     <task id="LOCAL-00002" summary="Added leaderboard and some functionality&#10;New user class to deal with the player">
       <option name="closed" value="true" />
-      <created>1748556343013</created>
+      <created>1748627638199</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1748556343013</updated>
+      <updated>1748627638199</updated>
     </task>
-    <task id="LOCAL-00003" summary="added timer counter and some bug fixes">
+    <task id="LOCAL-00003" summary="bug fixes">
       <option name="closed" value="true" />
-      <created>1748557848710</created>
+      <created>1748627923818</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1748557848710</updated>
+      <updated>1748627923818</updated>
     </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="824d2ff9-7e68-4ace-a6af-2a19b79e12e4" name="Changes" comment="added timer counter and some bug fixes" />
+      <changelist id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="bug fixes" />
       <created>1748610501879</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748610501879</updated>
       <workItem from="1748610503486" duration="6739000" />
+      <workItem from="1748619303007" duration="24666000" />
+      <workItem from="1748699021858" duration="29824000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00004" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748634517636</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748634517636</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748639356351</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748639356351</updated>
+    </task>
+    <task id="LOCAL-00006" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748659241712</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748659241712</updated>
+    </task>
+    <task id="LOCAL-00007" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748662765672</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748662765672</updated>
+    </task>
+    <task id="LOCAL-00008" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748664478794</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748664478794</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added fireball">
+      <option name="closed" value="true" />
+      <created>1748709875210</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1748709875211</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +203,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added leaderboard and some functionality&#10;New user class to deal with the player" />
     <MESSAGE value="added timer counter and some bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="added timer counter and some bug fixes" />
+    <MESSAGE value="bug fixes" />
+    <MESSAGE value="added fireball" />
+    <option name="LAST_COMMIT_MESSAGE" value="added fireball" />
   </component>
 </project>

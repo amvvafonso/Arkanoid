@@ -16,29 +16,43 @@
 
 package MyArkanoid;
 
+import utils.ImageUtils;
+
 import java.awt.*;
 
 /**
  * Created on 06/05/2025, 17:50:01 
  * @author manso - computer
  */
-public class Ball  extends GameObject{
+public class Ball  extends Animation{
+
 
 
     int vx = 3;
     int vy = 2;
 
+    public static String[] fire_ball_imgs = {
+            "/images/ball-fire0.png",
+            "/images/ball-fire1.png",
+            "/images/ball-fire2.png"};
+
     public Ball(Color myColor, int x, int y, int radius) {
-        super(myColor,x, y, radius, radius);
+        super(ImageUtils.Ball_color(),x, y, radius, radius);
+        load(fire_ball_imgs);
     }
-    
-    
-    
+
+    public void loadfire_ball_imgs(){
+        load(fire_ball_imgs);
+    }
+
     public void paint(Graphics gr){
+        //
+         gr.drawImage(frames[visibleFrame], x-12, y-7, width+15, height+15, null);
+        //
        gr.setColor(myColor);
        gr.fillOval(x, y, width, height);
        gr.setColor(Color.BLACK);
-       gr.drawOval(x, y, width, height); 
+       gr.drawOval(x, y, width, height);
     }
     
     public void move(){
