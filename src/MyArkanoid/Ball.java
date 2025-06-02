@@ -50,11 +50,11 @@ public class Ball  extends Animation{
         move();
         //bateu no fundo
         if( y + height >= bounds.height){
-            gameView.btPause.setEnabled(false);
+            GameView.btPause.setEnabled(false);
             throw new ArkanoidException("Perdeu o jogo");
         }
         
-        arkanoidGame.running = true;
+        ArkanoidGame.running = true;
         //resaltar
         if( this.x < 0 || this.x + this.width > bounds.width){
             this.vx *= -1;

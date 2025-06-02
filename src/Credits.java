@@ -5,11 +5,15 @@ import java.awt.event.ActionListener;
 
 public class Credits extends JDialog {
 
+    //Jframe que contem os creditos
+
+    //Componentes gráficas
     JButton voltar;
     JLabel titulo;
     JLabel imagem;
     JTextArea texto;
 
+    //Construtor que inicializa todos os compononentes
     public Credits() {
         setTitle("Credits");
         setVisible(true);

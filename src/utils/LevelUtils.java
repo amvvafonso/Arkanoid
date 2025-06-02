@@ -8,9 +8,13 @@ import java.util.Random;
 
 public class LevelUtils {
 
-    public static int colunas = 10;
-    public static int linhas = 8;
+    //Valores finais estaticos com o numero de colunas e linhas em cada nivel
+    //Alterando aqui, altera no codigo dinâmicamente
+    public static final int colunas = 10;
+    public static final int linhas = 8;
 
+    //Método que cria niveis aleatórios, a partir de valores random entre 1 a 100, sendo percentagems dos blocos no nivel
+    //Caso haja um problema na criação aleatória, existe um nivel predefinido que sera sempre carregado
     public static String createRandomLevel() throws ArkanoidException{
         try {
             String randomLevel = "";

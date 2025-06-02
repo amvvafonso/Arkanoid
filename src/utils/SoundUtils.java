@@ -9,20 +9,9 @@ import java.util.ArrayList;
 public class SoundUtils {
 
 
-    public static Clip loadResourceSound(String resourceName) throws Exception {
-        //input stream para o recurso        
-        InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourceName);
-        //input stream para ler som
-        AudioInputStream ain = AudioSystem.getAudioInputStream(in);
-        //obter o objeto para tocar o som
-        Clip clip = AudioSystem.getClip();
-        //ler o som 
-        clip.open(ain);
-        //retorn o som
-        return clip;
-    }
 
 
+    //Função que altera o volume de um efeito sonoro
     public static void setVolume(Clip clip, double volume) {
         // Obtém o controlador de ganho do clipe
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -39,11 +28,10 @@ public class SoundUtils {
 
 
 
+    //Função que reproduz o efeito sonor a partir do nome
     public static Clip playSound(String name){
         try {
             InputStream url = SoundUtils.class.getResourceAsStream("/sound/" + name + ".wav");
-
-            // Debug - System.out.println(SoundUtils.class.getResource("/sound/pop.wav"));
 
             InputStream buf = new BufferedInputStream(url);
 
@@ -52,6 +40,7 @@ public class SoundUtils {
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
 
+            //Coloca automaticamente o valor a 50% de som
             setVolume(clip, 0.5);
 
             if (clip.isRunning()) {
@@ -66,7 +55,8 @@ public class SoundUtils {
         return null;
     }
 
-
+    //Função que recria ficheiros wav
+    //apesar de não ser usado, mantive
     public static void recreateFile(String name){
         try {
             String path = System.getProperty("user.dir") + name;

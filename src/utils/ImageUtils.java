@@ -1,18 +1,3 @@
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
-//::                                                                         ::
-//::     Antonio Manuel Rodrigues Manso                                      ::
-//::                                                                         ::
-//::     I N S T I T U T O    P O L I T E C N I C O   D E   T O M A R        ::
-//::     Escola Superior de Tecnologia de Tomar                              ::
-//::     e-mail: manso@ipt.pt                                                ::
-//::     url   : http://orion.ipt.pt/~manso                                  ::
-//::                                                                         ::
-//::     This software was build with the purpose of investigate and         ::
-//::     learning.                                                           ::
-//::                                                                         ::
-//::                                                               (c)2024   ::
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//////////////////////////////////////////////////////////////////////////////
 package utils;
 
 import javax.imageio.ImageIO;
@@ -27,20 +12,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created on 06/05/2024, 16:34:46
- *
- * @author IPT - computer
- * @version 1.0
- */
+
 public class ImageUtils {
-       /**
-     * retorna o objeto que representa a imagem de um recurso
-     *
-     * @param path path para a imagem "/folder/resource.img"
-     * @return imagem
-     * @throws IOException erros de I/O
-     */
+
     public static BufferedImage loadImage(String path) throws IOException {
         try (InputStream is = ImageUtils.class.getResourceAsStream(path)) {
             if (is == null) {
@@ -50,11 +24,7 @@ public class ImageUtils {
         }
     }
 
-    /**
-     * Converte um icone para uma buffered image
-     * @param icon icone
-     * @return imagem
-     */
+
     public static BufferedImage getImageFromIcon(Icon icon) {
         BufferedImage buffer = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics g = buffer.getGraphics();
@@ -62,12 +32,7 @@ public class ImageUtils {
         g.dispose();
         return buffer;
     }
-    
-      /**
-     * converte uma umagem para tons de cinza
-     * @param color imagem colorida
-     * @return imagem cinza
-     */
+
     public static BufferedImage convertToGrayscale(BufferedImage color) {
         BufferedImage gray = new BufferedImage(color.getWidth(), color.getHeight(), BufferedImage.TYPE_INT_ARGB);
         ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
@@ -75,24 +40,13 @@ public class ImageUtils {
         return gray;
     }
 
-    /**
-     * converte um icone para tons de cinza
-     * @param icon icone colorido
-     * @return icone em tons de cinza
-     */
+
     public static ImageIcon convertToGrayscale(Icon icon) {
         return new ImageIcon(ImageUtils.convertToGrayscale(getImageFromIcon(icon)));
     }
    
       
-    /**
-     * redimensiona um icone
-     *
-     * @param icon icone
-     * @param width largura
-     * @param height altura
-     * @return icone redimensionado
-     */
+    //Redimensiona icon
     public static ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
         //imagem do icone
         Image img = icon.getImage();
@@ -102,13 +56,7 @@ public class ImageUtils {
         return new ImageIcon(img);
     }
     
-    /**
-     * Changes the transparency (alpha) of a BufferedImage.
-     *
-     * @param original imagem original.
-     * @param alpha transparência [0.0,1.0] 0.0-transparent)  1.0-opaca
-     * @return imagem transparente
-     */
+
     public static BufferedImage changeTransparency(BufferedImage original, float alpha) {
         // validar a compomente alpha
         if (alpha < 0.0f || alpha > 1.0f) {
@@ -132,13 +80,16 @@ public class ImageUtils {
         return transparentImage;
     }
 
-
+    //Obtém um cor random de um array predefinido
     public static Color RandomColor(){
         Color[] colors = new Color[]{Color.RED, Color.BLUE, Color.GRAY};
         return colors[new Random().nextInt(colors.length)];
     }
 
 
+    //Vai buscar as imagens para o background a partir de uma keyword
+    //Devido a problemas com o obtensão automatica, colocamos manualmente no catch para prevenir
+    //que o jogo crashe ou inicie sem imagens
     public static ArrayList<String> fetchBackgroundImages(/*int ii*/) {
         ArrayList<String> background_img_files_list = new ArrayList<>();
         try {
@@ -168,10 +119,7 @@ public class ImageUtils {
     }
 
     public static Color Ball_color() {
-
-
-
         return  RandomColor();
     }
-     //
+
 }

@@ -21,13 +21,23 @@ import java.util.Scanner;
 
 public class UserController extends JFrame {
 
+
+    //Controlador dos utilizadores
+
+    //Ficheiro onde são guardados os jogadores
     private static String ficheiro = "leaderBoard.txt";
+
+    //Componentes gráficos
     private JTextField nome;
     private JTextField numAluno;
     private JTable leaderBoard;
     private JButton registar;
     private JButton eliminar;
+
+    //Ficheiro
     private File file;
+
+    //Construtor
     public UserController() {
         initComponents();
     }
@@ -226,6 +236,8 @@ public class UserController extends JFrame {
     }
 
 
+    //Função para registar utilizador com as respetivas validações
+    //Caso não exista o ficheiro, ele cria e regista com os dados obtidos pelo JInputFields
     public boolean registarUser(User user){
         try {
             if (user.validateUser()) {
@@ -257,6 +269,8 @@ public class UserController extends JFrame {
         return false;
     }
 
+    //Função para eliminar utilizador
+    //Elimina so a partir do número de aluno, sendo o unico atributo que é unico
     public boolean deleteUser(User user){
         try {
 
@@ -288,7 +302,8 @@ public class UserController extends JFrame {
         return false;
     }
 
-
+    //Função que retoma um arraylist de users
+    //Lê linha a linha, separando por '-' e atribuindo a cada propriedade do modelo
     public static ArrayList<User> getAllUsers(){
         try {
             File file = new File(ficheiro);
@@ -308,6 +323,8 @@ public class UserController extends JFrame {
     }
 
 
+    //Função que retorna users em arraylists
+    //Mesma funcionada que o metodo anterior, apenas guarda os dados de maneira diferente
     public static ArrayList<ArrayList<String>> returnUser(){
         try{
             File file = new File(ficheiro);
@@ -330,6 +347,7 @@ public class UserController extends JFrame {
     }
 
 
+    //Como o nome indica, popula o combobox
     public static String[] populateComboBoxWithUsers(ArrayList<ArrayList<String>> userArrayList){
         try {
             String[] users = new String[userArrayList.size()];
@@ -344,6 +362,9 @@ public class UserController extends JFrame {
         return null;
     }
 
+
+    //Função que atualiza utilizador
+    //Sempre que o jogo é disposed, esta função atualiza os dados no ficheiro do respetivo utilizaor selecionaado
     public static boolean updateUser(User user){
         try {
                 File file = new File(ficheiro);

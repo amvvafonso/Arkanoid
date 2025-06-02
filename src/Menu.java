@@ -10,13 +10,15 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
 
-    JLabel jLabel;
+    //Componentes gráficos
     JLabel image;
     JButton start;
     JButton user;
     JButton credits;
     JButton quit;
 
+
+    //Construtor que inicaliza e cria o frame
     public Menu(){
         //Configurações Iniciais
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +47,7 @@ public class Menu extends JFrame {
                         SelectUser selectUser = new SelectUser();
                         selectUser.setLocationRelativeTo(Menu.this);
 
-                        //gameView game = new gameView();
+                        //GameView game = new GameView();
                         SoundUtils.playSound("game-start");
                         //game.setLocationRelativeTo(Menu.this);
                         //game.setVisible(true);

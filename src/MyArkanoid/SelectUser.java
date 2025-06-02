@@ -12,18 +12,21 @@ public class SelectUser extends JFrame {
     private JLabel titulo;
     private UserController userInterface;
 
+    //Construtor
     public SelectUser() throws HeadlessException {
         initComponents();
     }
 
 
-    public void initComponents(){
-
+    public void initComponents() {
 
         //Controladores
 
+        //Vai buscar todos os utilizadores registados e popula a combobox
         String[] users = UserController.populateComboBoxWithUsers(UserController.returnUser());
 
+
+        //Configurações de botões e componentes
         this.setTitle("Select User");
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,18 +34,18 @@ public class SelectUser extends JFrame {
 
         selectUser = new JComboBox<>();
         selectUser.setVisible(true);
-        selectUser.setModel(new DefaultComboBoxModel<String>(users != null ? users : new String[0]){
-                boolean permitido = true;
+        selectUser.setModel(new DefaultComboBoxModel<String>(users != null ? users : new String[0]) {
+            boolean permitido = true;
 
-                @Override
-                public void setSelectedItem(Object anObject) {
-                    if (!NOT_SELECTABLE_OPTION.equals(anObject)) {
-                        super.setSelectedItem(anObject);
-                    } else if (permitido) {
-                        permitido = false;
-                        super.setSelectedItem(anObject);
-                    }
+            @Override
+            public void setSelectedItem(Object anObject) {
+                if (!NOT_SELECTABLE_OPTION.equals(anObject)) {
+                    super.setSelectedItem(anObject);
+                } else if (permitido) {
+                    permitido = false;
+                    super.setSelectedItem(anObject);
                 }
+            }
         });
         selectUser.setPreferredSize(new Dimension(200, 150));
         selectUser.addItem(NOT_SELECTABLE_OPTION);
@@ -50,10 +53,10 @@ public class SelectUser extends JFrame {
         selectUser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                for (User user : UserController.getAllUsers()){
+                for (User user : UserController.getAllUsers()) {
                     String num = selectUser.getSelectedItem().toString().split(" - ")[1];
                     if (user.getNumAluno().equals(num)) {
-                        gameView jogo = new gameView(user);
+                        GameView jogo = new GameView(user);
                         jogo.setVisible(true);
                         jogo.setLocationRelativeTo(SelectUser.this);
                     }
@@ -79,15 +82,6 @@ public class SelectUser extends JFrame {
         pack();
 
     }
-
-
-
-
-
-
-
-
-
 
 
 }

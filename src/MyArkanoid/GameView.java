@@ -14,13 +14,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class gameView extends JFrame {
+public class GameView extends JFrame {
 
 
     private User jogador;
     private Temporizador temporizador;
     private int restartLimit;
-    public gameView(User user) {
+    public GameView(User user) {
         try {
             this.jogador = user;
             initComponents();
@@ -29,7 +29,7 @@ public class gameView extends JFrame {
     }
         catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
-            Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -50,7 +50,7 @@ public class gameView extends JFrame {
 
         //CONFGURACAO BOTOES
 
-        arkanoidGame1 = new arkanoidGame();
+        arkanoidGame1 = new ArkanoidGame();
         btSave = new JButton();
         btLoad = new JButton();
         btPause = new JButton();
@@ -98,7 +98,7 @@ public class gameView extends JFrame {
                     arkanoidGame1.limitRestarts(restartLimit);
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
-                    arkanoidGame.running = false;
+                    ArkanoidGame.running = false;
 
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -140,7 +140,7 @@ public class gameView extends JFrame {
 
         ;
 
-        //CONFIGURACAO LAYOUT
+        //CONFIGURACAO LAYOUT criado automaticamente a partir de GUI
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         GroupLayout layout = new GroupLayout(getContentPane());
@@ -189,7 +189,7 @@ public class gameView extends JFrame {
     }
 
 
-
+    //Função que
     @Override
     public void dispose() {
         temporizador.interrupt();
@@ -207,6 +207,7 @@ public class gameView extends JFrame {
 
     // METODOS BOTOES
 
+    //Recria um nivel novo com o recurso a função createPuzzle
     private void BtNewLevelPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (!btPause.isEnabled()) btPause.setEnabled(true);
@@ -218,6 +219,7 @@ public class gameView extends JFrame {
         }
     }
 
+    //Pausa o jogo
     private void btPauseActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (arkanoidGame1.timer.isRunning()){
@@ -234,10 +236,12 @@ public class gameView extends JFrame {
             btNewLevel.setEnabled(true);
         }
         catch (Exception ex) {
-            Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+
+    //Guarda o nivel localmente
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
         arkanoidGame1.stopGame();
 
@@ -249,12 +253,13 @@ public class gameView extends JFrame {
                 arkanoidGame1.continueGame();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
-                Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
     }
 
+    //Carrega o nivel guardado nos ficheiros
     private void btLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoadActionPerformed
         arkanoidGame1.stopGame();
         JFileChooser fc = new JFileChooser(".");
@@ -267,7 +272,7 @@ public class gameView extends JFrame {
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
-                Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -276,7 +281,8 @@ public class gameView extends JFrame {
 
 
 
-    private arkanoidGame arkanoidGame1;
+    //Componentes Swing
+    private ArkanoidGame arkanoidGame1;
     private JButton btLoad;
     private JButton btSave;
     static JButton btPause;

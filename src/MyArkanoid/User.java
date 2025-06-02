@@ -1,6 +1,9 @@
 package MyArkanoid;
 
 public class User {
+
+    //modelo de utilizador com os respetivos atributos necessarios
+
     private String username;
     private String numAluno;
     private int pontos;
@@ -82,6 +85,7 @@ public class User {
         return true;
     }
 
+    // Valida que o número de aluno foi colocado devidamente
     public boolean validadeNumeroAluno() {
         this.getNumAluno().replaceAll(" ", "");
 

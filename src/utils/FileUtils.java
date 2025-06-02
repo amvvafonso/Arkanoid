@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileUtils {
+    //Package que lida com os ficheiros
+
+
+    //Função que cria o puzzle a partir de um String randomizada
     public static String createPuzzle(String name){
         try {
             File file = new File(name );
@@ -29,7 +33,7 @@ public class FileUtils {
     }
 
 
-
+    //Funçaõ que elimina um ficheiro a partir do nome
     public static boolean deleteFile(String name){
         try {
             File file = new File(name);
@@ -46,6 +50,8 @@ public class FileUtils {
         }
     }
 
+
+    //Converte ArrayList bidimensionais para arrays nativos bidimensionais
     public static String[][] to2DArray(ArrayList<ArrayList<String>> lista){
         try {
             String[][] dados = new String[lista.size()][];
@@ -66,6 +72,8 @@ public class FileUtils {
 
     }
 
+
+    //Converte ArrayList para arrays nativos
     public static String[] to1DArray(ArrayList<ArrayList<String>> lista){
         try {
             String[] dados = new String[lista.size()];

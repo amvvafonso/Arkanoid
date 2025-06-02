@@ -13,14 +13,22 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leaderBoard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Credits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/arkanoidGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/NewJFrame.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/NewJFrame.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/gameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/arkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/gameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +73,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Debug",
+    "Application.Unnamed.executor": "Run",
     "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -145,7 +153,7 @@
       <workItem from="1748619303007" duration="24666000" />
       <workItem from="1748699021858" duration="29824000" />
       <workItem from="1748805305981" duration="23011000" />
-      <workItem from="1748863444443" duration="1682000" />
+      <workItem from="1748863444443" duration="6077000" />
     </task>
     <task id="LOCAL-00004" summary="bug fixes">
       <option name="closed" value="true" />
@@ -235,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748832048172</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="im dead">
+      <option name="closed" value="true" />
+      <created>1748868177256</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748868177256</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,16 +277,5 @@
     <MESSAGE value="pad moves verticaly" />
     <MESSAGE value="im dead" />
     <option name="LAST_COMMIT_MESSAGE" value="im dead" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MyArkanoid/UserController.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
