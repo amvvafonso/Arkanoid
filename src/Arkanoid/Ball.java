@@ -1,11 +1,14 @@
 
 
-package MyArkanoid;
+package Arkanoid;
 
-import utils.ImageUtils;
+import Utils.ImageUtils;
 
 import java.awt.*;
-
+/**
+ * <p>Ball model</p>
+ * @author Prof Manso and Afonso Viana and João Graça
+ */
 
 public class Ball  extends Animation{
 

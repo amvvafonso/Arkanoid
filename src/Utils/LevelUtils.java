@@ -1,10 +1,13 @@
-package utils;
+package Utils;
 
-import MyArkanoid.ArkanoidException;
-import MyArkanoid.Brick;
-import MyArkanoid.Ball;
-import java.awt.*;
+import Arkanoid.ArkanoidException;
+
 import java.util.Random;
+
+/**
+ * <p>Package that deals with the level creation stuff, allowing random levels to be created</p>
+ * @author Afonso Viana
+ */
 
 public class LevelUtils {
 

@@ -1,4 +1,9 @@
-package MyArkanoid;
+package Arkanoid;
+
+/**
+ * <p>Model for the user</p>
+ * @author Afonso Viana
+ */
 
 public class User {
 
@@ -24,6 +29,7 @@ public class User {
         this.timePlayed = timePlayed;
     }
 
+    //Getter and Setters
     public int getPontos() {
         return pontos;
     }
@@ -84,6 +90,7 @@ public class User {
 
         return true;
     }
+
 
     // Valida que o número de aluno foi colocado devidamente
     public boolean validadeNumeroAluno() {

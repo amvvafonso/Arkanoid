@@ -1,9 +1,14 @@
-package MyArkanoid;
+package Arkanoid;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+/**
+ * <p>JFrame which deals with the selection of user to be played, relevant so we know which user to update the stats</p>
+ * @author Afonso Viana
+ */
 
 public class SelectUser extends JFrame {
 

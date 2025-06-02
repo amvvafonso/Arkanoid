@@ -1,8 +1,11 @@
 
-package MyArkanoid;
+package Arkanoid;
 
 import javax.swing.*;
-
+/**
+ * <p>Deals with the game exceptions</p>
+ * @author Afonso Viana
+ */
 
 public class ArkanoidException extends Exception{
 

@@ -1,9 +1,8 @@
 
 
-package MyArkanoid;
+package Arkanoid;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created on 06/05/2025, 18:20:10
@@ -29,10 +28,6 @@ public class Paddle extends Animation {
     public void paint(Graphics gr) {
         gr.drawImage(frames[visibleFrame], x, y, width, height, null);
 
-//        gr.setColor(myColor);
-////        gr.fillRect(x, y, width, height);
-//        gr.setColor(Color.DARK_GRAY);
-//        gr.drawRect(x, y, width, height);
 
     }
 
@@ -47,6 +42,5 @@ public class Paddle extends Animation {
         }
     }
     
-    private static final long serialVersionUID =1;
 
 }

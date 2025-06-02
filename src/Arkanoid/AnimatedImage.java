@@ -14,9 +14,9 @@
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  //////////////////////////////////////////////////////////////////////////////
 
-package MyArkanoid;
+package Arkanoid;
 
-import utils.ImageUtils;
+import Utils.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;

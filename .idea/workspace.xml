@@ -9,26 +9,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="im dead">
+    <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="adição de comentarios em todo o codigo">
+      <change afterPath="$PROJECT_DIR$/src/Arkanoid/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leaderBoard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Credits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/NewJFrame.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/NewJFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/arkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/gameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FileUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ImageUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/AnimatedImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/AnimatedImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/ArkanoidException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/ArkanoidGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Brick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/SelectUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/Temporizador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arkanoid/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/LevelUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/SoundUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +95,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15429688",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "two.files.diff.last.used.file": "C:/Users/jpgra/Desktop/Arknoid_Final/src/MyArkanoid/Ball.java",
     "vue.rearranger.settings.migration": "true"
   }
@@ -153,7 +159,9 @@
       <workItem from="1748619303007" duration="24666000" />
       <workItem from="1748699021858" duration="29824000" />
       <workItem from="1748805305981" duration="23011000" />
-      <workItem from="1748863444443" duration="6077000" />
+      <workItem from="1748863444443" duration="13742000" />
+      <workItem from="1748889236861" duration="639000" />
+      <workItem from="1748905766391" duration="2755000" />
     </task>
     <task id="LOCAL-00004" summary="bug fixes">
       <option name="closed" value="true" />
@@ -251,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748868177256</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="adição de comentarios em todo o codigo">
+      <option name="closed" value="true" />
+      <created>1748872405825</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748872405825</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +292,22 @@
     <MESSAGE value="some bug bixes and some functionallity aditions" />
     <MESSAGE value="pad moves verticaly" />
     <MESSAGE value="im dead" />
-    <option name="LAST_COMMIT_MESSAGE" value="im dead" />
+    <MESSAGE value="adição de comentarios em todo o codigo" />
+    <option name="LAST_COMMIT_MESSAGE" value="adição de comentarios em todo o codigo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Arkanoid/ArkanoidGame.java</url>
+          <line>385</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

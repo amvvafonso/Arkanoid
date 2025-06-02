@@ -1,4 +1,9 @@
-package MyArkanoid;
+package Arkanoid;
+
+/**
+ * <p>Class that creates threads, used as a timer</p>
+ * @author Afonso Viana and João Graça
+ */
 
 public class Temporizador extends Thread implements Runnable {
 

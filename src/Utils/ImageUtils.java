@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
+
+/**
+ * <p>Package that deals with image and manipulates images</p>
+ * @author Afonso Viana and João Graça
+ */
 
 
 public class ImageUtils {

@@ -1,6 +1,6 @@
-package MyArkanoid;
+package Arkanoid;
 
-import utils.FileUtils;
+import Utils.FileUtils;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -18,6 +18,11 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+/**
+ * <p>Controller which controls the creation of users, and the data associated with users</p>
+ * @author Afonso Viana
+ */
 
 public class UserController extends JFrame {
 

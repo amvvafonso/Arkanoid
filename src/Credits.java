@@ -3,6 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *
+ * <p>JFrame that contains the credits</p>
+ * @author Afonso Viana
+ */
+
 public class Credits extends JDialog {
 
     //Jframe que contem os creditos

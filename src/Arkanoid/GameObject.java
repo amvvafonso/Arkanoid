@@ -14,39 +14,34 @@
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //////////////////////////////////////////////////////////////////////////////
 
-package MyArkanoid;
+package Arkanoid;
 
 import java.awt.*;
+import java.io.Serializable;
 
 /**
- * Created on 06/05/2025, 18:07:05 
+ * Created on 06/05/2025, 18:17:26 
  * @author manso - computer
  */
-public class Brick extends GameObject{
+public class GameObject extends Rectangle implements Serializable{
+    protected Color myColor;
 
-    
-    boolean isVisible = true;
-
-    public Brick(Color myColor, int x, int y, int width, int height) {
-        super(myColor,x, y, width, height);
+    public GameObject(Color myColor, int x, int y, int width, int height) {
+        super(x, y, width, height);
+        this.myColor = myColor;
     }
     
     
-    public void paint(Graphics gr){
-        if( !isVisible)
-            return;
-        
-        gr.setColor(myColor);
-        gr.fillRect(x, y, width, height);
-        gr.setColor(Color.DARK_GRAY);
-        gr.drawRect(x, y, width, height);
-        
+
+    public Color getMyColor() {
+        return myColor;
     }
 
-
-
-    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    private static final long serialVersionUID = 202505061807L;
+    public void setMyColor(Color myColor) {
+        this.myColor = myColor;
+    }
+    
+    private static final long serialVersionUID =1;
     //:::::::::::::::::::::::::::  Copyright(c) M@nso  2025  :::::::::::::::::::
     ///////////////////////////////////////////////////////////////////////////
 }

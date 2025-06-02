@@ -1,8 +1,8 @@
-package MyArkanoid;
+package Arkanoid;
 
-import utils.FileUtils;
-import utils.ImageUtils;
-import utils.SoundUtils;
+import Utils.FileUtils;
+import Utils.ImageUtils;
+import Utils.SoundUtils;
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**
+ * <p>JFrame that represents the game window</p>
+ * @author Afonso Viana and João Graça
+ */
 
 public class GameView extends JFrame {
 

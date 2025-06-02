@@ -1,10 +1,14 @@
-package utils;
+package Utils;
 
-import MyArkanoid.ArkanoidException;
+import Arkanoid.ArkanoidException;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
+
+/**
+ * <p>Package that deals with Files and conversions</p>
+ * @author Afonso Viana
+ */
 
 public class FileUtils {
     //Package que lida com os ficheiros

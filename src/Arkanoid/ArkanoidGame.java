@@ -1,9 +1,9 @@
 
-package MyArkanoid;
+package Arkanoid;
 
-import utils.ImageUtils;
-import utils.LevelUtils;
-import utils.SoundUtils;
+import Utils.ImageUtils;
+import Utils.LevelUtils;
+import Utils.SoundUtils;
 
 
 import javax.swing.*;
@@ -19,6 +19,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+
+/**
+ * <p>Class that has all the logic associated with the game</p>
+ * @author Afonso Viana and João Graça
+ */
 
 public class ArkanoidGame extends JComponent
         implements ActionListener, MouseMotionListener {
@@ -376,17 +382,14 @@ public class ArkanoidGame extends JComponent
     //Função que simula o movimento da bola a partir das coordenadas da cada objeto e as suas respetivas dimensoões
     public Ball updateBallMovement(Ball ball, Brick brick){
         try {
-            if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height) {
+            if (/* Direita */(ball.x <= brick.x) && (ball.y >= brick.y && ball.y <= brick.y + brick.height)) {
                 ball.vx *= -1;
-            } else if (/* Esquerda */(ball.x >= brick.x + brick.width)) {
+            } else if (/* Esquerda */(ball.x >= brick.x + brick.width) && (ball.y >= brick.y && ball.y <= brick.y + brick.height)) {
                 ball.vx *= -1;
             } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width) {
                 ball.vy *= -1;
             } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width ) {
                 ball.vy *= -1;
-            } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height) {
-                ball.vy *= -1;
-                ball.vx *= -1;
             }
             return ball;
         }

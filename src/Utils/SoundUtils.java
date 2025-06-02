@@ -1,15 +1,15 @@
 
-package utils;
+package Utils;
 
 import javax.sound.sampled.*;
 import java.io.*;
-import java.net.URL;
-import java.util.ArrayList;
+
+/**
+ * <p>Class which deals with sounds effects and sound settings</p>
+ * @author Afonso Viana
+ */
 
 public class SoundUtils {
-
-
-
 
     //Função que altera o volume de um efeito sonoro
     public static void setVolume(Clip clip, double volume) {
@@ -28,7 +28,7 @@ public class SoundUtils {
 
 
 
-    //Função que reproduz o efeito sonor a partir do nome
+
     public static Clip playSound(String name){
         try {
             InputStream url = SoundUtils.class.getResourceAsStream("/sound/" + name + ".wav");

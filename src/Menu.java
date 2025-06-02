@@ -1,21 +1,26 @@
-import MyArkanoid.SelectUser;
-import MyArkanoid.UserController;
-import utils.FileUtils;
-import utils.SoundUtils;
+import Arkanoid.SelectUser;
+import Arkanoid.UserController;
+import Utils.FileUtils;
+import Utils.SoundUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * <p>JFrame that represents the menu window</p>
+ * @author Afonso Viana
+ */
+
 public class Menu extends JFrame {
 
     //Componentes gráficos
-    JLabel image;
-    JButton start;
-    JButton user;
-    JButton credits;
-    JButton quit;
+    private JLabel image;
+    private JButton start;
+    private JButton user;
+    private JButton credits;
+    private JButton quit;
 
 
     //Construtor que inicaliza e cria o frame
