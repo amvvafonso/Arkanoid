@@ -10,8 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="bug fixes">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Arkanoid_27502_23875_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Arkanoid_27502_23875_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leaderBoard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/SelectUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/background2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/background3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/background3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/background4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/background4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/background5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LevelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LevelUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,25 +69,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;JavaMethodFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jpgra/Desktop/Arknoid_Final&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/jpgra/Desktop/Arknoid_Final/src/MyArkanoid/Ball.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jpgra/Desktop/Arknoid_Final",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15429688",
+    "project.structure.side.proportion": "0.2",
+    "two.files.diff.last.used.file": "C:/Users/jpgra/Desktop/Arknoid_Final/src/MyArkanoid/Ball.java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/images" />
+      <recent name="$PROJECT_DIR$/src/images/background" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -124,6 +151,7 @@
       <workItem from="1748610503486" duration="6739000" />
       <workItem from="1748619303007" duration="24666000" />
       <workItem from="1748699021858" duration="29824000" />
+      <workItem from="1748805305981" duration="17155000" />
     </task>
     <task id="LOCAL-00004" summary="bug fixes">
       <option name="closed" value="true" />
@@ -181,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748790870963</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1748791606322</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748791606322</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

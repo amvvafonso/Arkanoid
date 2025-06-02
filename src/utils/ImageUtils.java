@@ -137,28 +137,34 @@ public class ImageUtils {
         Color[] colors = new Color[]{Color.RED, Color.BLUE, Color.GRAY};
         return colors[new Random().nextInt(colors.length)];
     }
-    //
-    //public static int i_para_Background_img_list=0;
-    public static /*String*/ ArrayList<String> Background_img_list(/*int ii*/) {
 
-        String folder_path_name = "src/images";
-        int i = 0;
-        File background_image_folder = new File(folder_path_name);
-        String img_name_checker = "background";
-        File[] img_files_list = background_image_folder.listFiles();//lista de ficheiros no folder
-        ArrayList<String> background_img_files_list = new ArrayList<String>();
-        //diferenciar ficheiros para usar no background
-        for (File file : img_files_list) {
-            if (file.getName().contains(img_name_checker)) {
-                background_img_files_list.add("/images/"+file.getName());
+
+    public static ArrayList<String> fetchBackgroundImages(/*int ii*/) {
+        ArrayList<String> background_img_files_list = new ArrayList<>();
+        try {
+            File files = new File("/images/");
+
+            File[] fileList = files.listFiles();
+
+            for (File file : fileList){
+                if (file.getName().contains("background")){
+                    background_img_files_list.add(file.getAbsolutePath() + file.getName());
+                }
             }
+            //diferenciar ficheiros para usar no background
+
+            System.out.println("Nomrla");
+            return background_img_files_list;
         }
-        //assert files != null;
-       /* while(i<background_img_files_list.size()){
-        System.out.println("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ background_img_files_list.get(i));i++;}
-    */
-        //return background_img_files_list.get(ii);
-        return background_img_files_list;
+        catch (Exception es){
+            background_img_files_list.add("/images/background2.jpg");
+            background_img_files_list.add("/images/background3.jpg");
+            background_img_files_list.add("/images/background4.jpg");
+            background_img_files_list.add("/images/background1.png");
+            return background_img_files_list;
+        }
+
+
     }
 
     public static Color Ball_color() {

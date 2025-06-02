@@ -10,7 +10,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,8 +56,8 @@ public class playGame extends JFrame {
         btNewLevel = new JButton();
         volume = new JSlider();
         volumeText = new JLabel();
-        Display_Score= new JTextField();
-        Display_time = new JTextField();
+        displayScore = new JTextField();
+        displayTime = new JTextField();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,9 +92,9 @@ public class playGame extends JFrame {
         btRestart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-                  //  arkanoidGame1.ArkanoidGame
+                    btPause.setEnabled(true);
                     Number_of_restarts++;
-                    arkanoidGame1.Getting_to_slow(Number_of_restarts);
+                    arkanoidGame1.limitRestarts(Number_of_restarts);
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
                 } catch (IOException e) {
@@ -112,24 +111,27 @@ public class playGame extends JFrame {
                 BtNewLevelPerformed(evt);
             }
         });
-//
-        Display_time.setFont(new java.awt.Font("Serif",Font.BOLD,  12));
-//        Display_time.setBackground(Color.BLACK);
-//        Display_time.setForeground(Color.RED);
-        //
-//
-        Display_Score.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
-        Display_Score.setBackground(Color.BLACK);
-        Display_Score.setForeground(Color.YELLOW);
-        //
+
+        displayTime.setFont(new java.awt.Font("Serif",Font.BOLD,  12));
+        displayTime.setHorizontalAlignment(SwingConstants.CENTER);
+        displayTime.setEnabled(false);
+        displayTime.setDisabledTextColor(Color.BLACK);
+
+
+        displayScore.setFont(new java.awt.Font("Serif",Font.BOLD,  13));
+        displayScore.setHorizontalAlignment(SwingConstants.CENTER);
+        displayScore.setEnabled(false);
+        displayScore.setDisabledTextColor(Color.BLACK);
+
 
         volume.setMaximumSize(new Dimension(100,50));
-        volume.setValue(50);
+        volume.setValue(0);
         volume.setToolTipText("Volume");
         volume.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 System.out.println(volume.getValue());
-                SoundUtils.setVolume(music, volume.getValue() * 0.01);
+//                SoundUtils.setVolume(music, volume.getValue() * 0.01);
+                SoundUtils.setVolume(music, 0);
             }
         });
 
@@ -139,8 +141,9 @@ public class playGame extends JFrame {
         //CONFIGURACAO LAYOUT
 
 
-        setForeground(Color.RED);
+
         GroupLayout layout = new GroupLayout(getContentPane());
+
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -151,10 +154,10 @@ public class playGame extends JFrame {
                         .addComponent(volumeText)
                         .addComponent(volume)
                         //
-                        .addComponent(Display_time)
+                        .addComponent(displayTime)
                         //
                         //
-                        .addComponent(Display_Score)
+                        .addComponent(displayScore)
                         //
                     .addComponent(btPause)
                         .addComponent(btNewLevel)
@@ -164,6 +167,7 @@ public class playGame extends JFrame {
 
 
         );
+        setForeground(Color.DARK_GRAY);
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -174,10 +178,10 @@ public class playGame extends JFrame {
                     .addComponent(volume)
                     .addGap(170, 170, 170)
                     //
-                    .addComponent(Display_time)
+                    .addComponent(displayTime)
                     //
                     //
-                    .addComponent(Display_Score)
+                    .addComponent(displayScore)
                     //
                     .addComponent(btRestart)
                     .addComponent(btPause)
@@ -196,13 +200,11 @@ public class playGame extends JFrame {
 
 
 
-
-
     @Override
     public void dispose() {
         temporizador.interrupt();
         jogador.setTimePlayed(jogador.getTimePlayed() + temporizador.getTempo());
-        jogador.setPontos(arkanoidGame1.Score);
+        jogador.setPontos(jogador.getPontos() + arkanoidGame1.Score);
         UserController.updateUser(jogador);
         music.stop();
         super.dispose();
@@ -289,13 +291,13 @@ public class playGame extends JFrame {
     private ArkanoidGame arkanoidGame1;
     private JButton btLoad;
     private JButton btSave;
-    private JButton btPause;
+    static JButton btPause;
     private JButton btRestart;
     private JButton btNewLevel;
     private Clip music;
     private JSlider volume;
     private JLabel volumeText;
-    static JTextField Display_time;
-    static JTextField Display_Score;
+    static JTextField displayTime;
+    static JTextField displayScore;
     // End of variables declaration
 }

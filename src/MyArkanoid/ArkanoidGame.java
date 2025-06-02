@@ -26,24 +26,40 @@ public class ArkanoidGame extends JComponent
 
     private BufferedImage imgBack = null;
     private int img_number=0;
-    private ArrayList<String> passover= ImageUtils.Background_img_list();
+    private ArrayList<String> backgroundIteration;
     private ArrayList<BufferedImage> imgBack_list =  new ArrayList<BufferedImage>();
     public int Score=0;
     boolean fireball = false;
-    private Temporizador fireballTimer;
-    Ball ball;
-    ArrayList<Brick> bricks;
-    Paddle pad;
-    Boolean running;
-    List<Brick> BricksToRemove = new ArrayList<>();
-    Boolean powerUsed = false;
-    Timer timer;
-   static String Time_display;
+    private Ball ball;
+    private ArrayList<Brick> bricks;
+    private Paddle pad;
+    public Boolean running;
+    private List<Brick> BricksToRemove = new ArrayList<>();
+    public Timer timer;
+    static String Time_display;
     static String Time_display_minutes;
-    int counter = 0;
-    Temporizador temporizador;
+    private int counter = 0;
+    private Temporizador temporizador;
 
-    private User jogador;
+
+
+
+    public ArkanoidGame() {
+
+        temporizador = new Temporizador();
+        timer = new Timer(10, this);
+        Temporizador.show_time();
+
+        timer.start();
+        backgroundSequence();
+
+        addMouseMotionListener(this);
+
+        timer.stop();
+
+        running = false;
+
+    }
 
 
     public void saveGame(String path) throws Exception{
@@ -54,10 +70,13 @@ public class ArkanoidGame extends JComponent
         out.close();
     }
     
-    
     public void loadLevel(String file) throws IOException{
         List<String> txt = Files.readAllLines(Paths.get(file));
         //dimensoes dos blocos
+        Score = 0;
+        counter = 0;
+        BricksToRemove = new ArrayList<>();
+
         int dimX = getWidth() / LevelUtils.colunas;
         int dimY = getHeight() / LevelUtils.linhas;
         bricks = new ArrayList<>();
@@ -73,21 +92,26 @@ public class ArkanoidGame extends JComponent
                 else if (txt.get(y).charAt(x) == 'X'){
                     bricks.add( new Brick(Color.YELLOW, x*dimX,y * dimY, dimX, dimY));
                     counter++;
-                } /*Bomb Brick*/else if (txt.get(y).charAt(x) == 'B'){
-                    bricks.add( new Brick(Color.ORANGE, x*dimX,y * dimY, dimX, dimY));
+                }
+                else if (txt.get(y).charAt(x) == 'O'){
+                    bricks.add(new Brick(Color.ORANGE, x*dimX,y * dimY, dimX, dimY));
                     counter++;
                 }
+                else if (txt.get(y).charAt(x) == ' '){
+                    Brick brick = new Brick(Color.WHITE, x*dimX,y * dimY, dimX, dimY);
+                    brick.isVisible = false;
+                    bricks.add(brick);
+                }
 
-                
             }
         }
-        this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, dimX, 20);
+        this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, 100, 20);
         this.ball = new Ball(Color.yellow, getWidth()/4,  getHeight()-60, 10);
-        this.ball.vx = 2;
-        this.ball.vy = -2;
+
+        this.ball.vx = 3;
+        this.ball.vy = -3;
     }
-    
-    
+
     public void loadGame(String path) throws Exception{
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
@@ -96,20 +120,11 @@ public class ArkanoidGame extends JComponent
         this.bricks = (ArrayList<Brick>) in.readObject();
         in.close();
     }
-    
-    
-    public void stopGame(){
-        running = false;
-        timer.stop();
-    }
 
-    public void continueGame(){
-        running = true;
-        timer.start();
-    }
-    public void image_fade() {
+    public void backgroundSequence() {
         //imgBack1 = ImageUtils.loadImage("/images/background1.png");
-        for (String path : passover) {
+        backgroundIteration = new ArrayList<>(ImageUtils.fetchBackgroundImages());
+        for (String path : backgroundIteration) {
             try {
                 imgBack_list.add(ImageUtils.loadImage(path));
             } catch (IOException _e) {}
@@ -121,45 +136,6 @@ public class ArkanoidGame extends JComponent
             repaint();
         }).start();
     }
-
-    public void soundtrack_rotation() {
-
-    }
-
-    public ArkanoidGame() {
-
-        temporizador = new Temporizador();
-
-        start();
-        timer = new Timer(10, this);
-        Temporizador.show_time();
-        timer.start();
-        running = true;
-        image_fade();
-
-            //imgBack = ImageUtils.changeTransparency(imgBack, 0.6f);
-
-
-        addMouseMotionListener(this);
-
-        timer.stop();
-
-        running = false;
-
-    }
-
-    public void start() {
-
-
-        bricks = new ArrayList<>();
-        bricks.add(new Brick(Color.GREEN, 10, 10, 30, 10));
-        bricks.add(new Brick(Color.MAGENTA, 50, 10, 30, 10));
-        bricks.add(new Brick(Color.BLUE, 90, 10, 30, 10));
-        bricks.add(new Brick(Color.ORANGE, 130, 10, 30, 10));
-        pad = new Paddle(Color.RED, 200, 180, 100, 40);
-
-    }
-
 
     public void paintComponent(Graphics gr) {
 
@@ -182,9 +158,8 @@ public class ArkanoidGame extends JComponent
         }
         pad.paint(gr);
 
+
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -196,96 +171,86 @@ public class ArkanoidGame extends JComponent
                 }
 
                 ball.move(this.getBounds());
-                int measure_iteration_count = 0;
+
                 for (Brick brick : bricks) {
-                    measure_iteration_count++;
                     if (brick.intersects(ball) && brick.isVisible) {
                         if (brick.getMyColor().equals(Color.GRAY)) {
-
-                            if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
-                                ball.vx *= -1;
-                            } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
-                                ball.vx *= -1;
-                            } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
-                                ball.vy *= -1;
-                            } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
-                                ball.vy *= -1;
-                            } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
-                                ball.vy *= -1;
-                                ball.vx *= -1;
-                            }
+                            updateBallMovement(ball, brick);
                         }
                         else if (!brick.getMyColor().equals(Color.GRAY)) {
-
-
-                            if (brick.getMyColor().equals(Color.ORANGE) && fireball){
+                            if (brick.getMyColor().equals(Color.RED) && fireball && brick.isVisible){
                                 Brick[] lst = new Brick[3];
                                 if (bricks.indexOf(brick) - 1 > 0){
-                                    bricks.get(bricks.indexOf(brick) - 1).isVisible = false;
-                                    lst[0] = bricks.get(bricks.indexOf(brick) - 1);
+                                    if (!bricks.get(bricks.indexOf(brick) - 1).getMyColor().equals(Color.GRAY)) {
+                                        bricks.get(bricks.indexOf(brick) - 1).isVisible = false;
+                                        BricksToRemove.add(bricks.get(bricks.indexOf(brick) - 1));
+                                        lst[0] = bricks.get(bricks.indexOf(brick) - 1);
+                                        Score++;
+                                    }
                                 }
                                 if (bricks.indexOf(brick) + 1 < bricks.size()){
-                                    bricks.get(bricks.indexOf(brick) + 1).isVisible = false;
-                                    lst[1] = bricks.get(bricks.indexOf(brick) - 1);
+                                    if (!bricks.get(bricks.indexOf(brick) + 1).getMyColor().equals(Color.GRAY)) {
+                                        bricks.get(bricks.indexOf(brick) + 1).isVisible = false;
+                                        lst[1] = bricks.get(bricks.indexOf(brick) + 1);
+                                        BricksToRemove.add(bricks.get(bricks.indexOf(brick)));
+                                        Score++;
+                                    }
                                 }
-                                if (bricks.indexOf(brick) - LevelUtils.linhas > 0){
-                                    bricks.get(bricks.indexOf(brick) - LevelUtils.linhas ).isVisible = false;
-                                    lst[2] = bricks.get(bricks.indexOf(brick) - LevelUtils.linhas );
+                                if (bricks.indexOf(brick) - LevelUtils.linhas >= 0){
+                                    if (bricks.get(bricks.indexOf(brick) - LevelUtils.linhas ).getMyColor().equals(Color.GRAY)){
+                                        bricks.get(bricks.indexOf(brick) - (LevelUtils.linhas + 1)).isVisible = false;
+                                        lst[2] = bricks.get(bricks.indexOf(brick) - LevelUtils.linhas );
+                                        BricksToRemove.add(bricks.get(bricks.indexOf(brick)));
+                                        Score++;
+                                    }
+
                                 }
+
+                                updateBallMovement(ball, brick);
+
+                                brick.isVisible = false;
 
                             }
+                            else {
+                                if (brick.getMyColor().equals(Color.YELLOW)) {
+                                    if (ball.width > 5) {
+                                        ball.width -= 5;
+                                        ball.height -= 5;
+                                        new Thread(() -> {
+                                            try {
+                                                Thread.sleep(new Random().nextInt(5000, 20000));
+                                            } catch (InterruptedException ex) {
+                                                throw new RuntimeException(ex);
+                                            }
+                                            ball.width += 5;
+                                            ball.height += 5;
+                                        }).start();
+                                    }
+                                }
 
-
-                            if (brick.getMyColor().equals(Color.YELLOW)) {
-                                if (!powerUsed) {
-                                    powerUsed = true;
-                                    ball.width -= 5;
-                                    ball.height -= 5;
+                                if (brick.getMyColor().equals(Color.ORANGE)) {
+                                    fireball = true;
                                     new Thread(() -> {
                                         try {
-                                            Thread.sleep(new Random().nextInt(5000, 20000));
+                                            Thread.sleep(new Random().nextInt(3000, 5000));
                                         } catch (InterruptedException ex) {
                                             throw new RuntimeException(ex);
                                         }
-                                        ball.width += 5;
-                                        ball.height += 5;
+                                        fireball = false;
                                     }).start();
-                                    powerUsed = false;
                                 }
+
+
+                                updateBallMovement(ball, brick);
+
+                                brick.isVisible = false;
+                                BricksToRemove.add(brick);
+                                Score++;
                             }
 
-                            if (brick.getMyColor().equals(Color.ORANGE)) {
-                                fireball = true;
-                                new Thread(() -> {
-                                    try {
-                                        Thread.sleep(new Random().nextInt(3000,5000));
-                                    } catch (InterruptedException ex) {
-                                        throw new RuntimeException(ex);
-                                    }
-                                    fireball = false;
-                                }).start();
-                            }
-
-
-                            if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
-                                ball.vx *= -1;
-                            } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
-                                ball.vx *= -1;
-                            } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
-                                ball.vy *= -1;
-                            } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width -5 ) {
-                                ball.vy *= -1;
-                            } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
-                                ball.vy *= -1;
-                                ball.vx *= -1;
-                            }
-
-                            brick.isVisible = false;
-                            Score++;
-                            playGame.Display_Score.setText("Score: "+Score);
+                            playGame.displayScore.setText("Score: " + Score);
                             checkIfWin(brick);
                             SoundUtils.playSound("pop");
-
                         }
 
                     }
@@ -293,9 +258,11 @@ public class ArkanoidGame extends JComponent
 
             pad.collide(ball);
 
-
             repaint();
-        } catch (ArkanoidException ex) {
+
+
+        }
+        catch (ArkanoidException ex) {
             if (this.isDisplayable()) {
                 SoundUtils.playSound("game-over");
                 ex.showError();
@@ -304,16 +271,19 @@ public class ArkanoidGame extends JComponent
         }
 
     }
-public void Getting_to_slow(int Number_of_restarts){
-        if(Number_of_restarts>4){
-            timer = new Timer(10, this);
+
+    public void limitRestarts(int Number_of_restarts){
+        if(Number_of_restarts==3){
+            new ArkanoidException("Perdeu!").showMessage();
+            this.timer.stop();
         }
 }
+
     public void checkIfWin(Brick... brick){
         try {
+            System.out.println("Destruidos - " +  BricksToRemove.size() + "\ncontagem total - " + counter);
             for (Brick b : brick) {
-                BricksToRemove.add(b);
-                if (BricksToRemove.size() == counter){
+                if (BricksToRemove.size() >= counter){
                     if (this.isDisplayable()){
                         new ArkanoidException("Ganhou").showMessage();
                         timer.stop();
@@ -326,8 +296,6 @@ public void Getting_to_slow(int Number_of_restarts){
         }
     }
 
-
-
     @Override
     public void mouseDragged(MouseEvent e) {
     }
@@ -335,6 +303,16 @@ public void Getting_to_slow(int Number_of_restarts){
     @Override
     public void mouseMoved(MouseEvent e) {
         pad.moveTo(e.getX());
+    }
+
+    public void stopGame(){
+        running = false;
+        timer.stop();
+    }
+
+    public void continueGame(){
+        running = true;
+        timer.start();
     }
 
 
@@ -347,4 +325,25 @@ public void Getting_to_slow(int Number_of_restarts){
     }
 
 
+    public Ball updateBallMovement(Ball ball, Brick brick){
+        try {
+            if (/* Direita */(ball.x <= brick.x) && ball.y >= brick.y && ball.y <= brick.y + brick.height - 5) {
+                ball.vx *= -1;
+            } else if (/* Esquerda */(ball.x >= brick.x + brick.width - 5)) {
+                ball.vx *= -1;
+            } else if (/* CIMA */ (ball.y <= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
+                ball.vy *= -1;
+            } else if (/* BAIXO */ (ball.y >= brick.y) && ball.x >= brick.x && ball.x <= brick.x + brick.width - 5) {
+                ball.vy *= -1;
+            } else if (/* Canto */ball.y == brick.y && ball.y == brick.y + brick.height - 5) {
+                ball.vy *= -1;
+                ball.vx *= -1;
+            }
+            return ball;
+        }
+        catch ( Exception e ){
+            e.printStackTrace();
+        }
+        return ball;
+    }
 }

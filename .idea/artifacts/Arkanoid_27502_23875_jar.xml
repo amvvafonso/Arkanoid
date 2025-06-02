@@ -5,6 +5,7 @@
       <element id="module-output" name="Arkanoid-27502_23875" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/resources" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/sound" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/images" />
     </root>
   </artifact>
 </component>

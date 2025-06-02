@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class SelectUser extends JFrame {
 
@@ -39,22 +40,23 @@ public class SelectUser extends JFrame {
                     if (!NOT_SELECTABLE_OPTION.equals(anObject)) {
                         super.setSelectedItem(anObject);
                     } else if (permitido) {
-                        // Allow this just once
                         permitido = false;
                         super.setSelectedItem(anObject);
                     }
                 }
         });
-
+        selectUser.setPreferredSize(new Dimension(200, 150));
         selectUser.addItem(NOT_SELECTABLE_OPTION);
         selectUser.setSelectedIndex(users.length);
         selectUser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 for (User user : UserController.getAllUsers()){
-                    if (user.getNumAluno().equals(selectUser.getSelectedItem())) {
+                    String num = selectUser.getSelectedItem().toString().split(" - ")[1];
+                    if (user.getNumAluno().equals(num)) {
                         playGame jogo = new playGame(user);
                         jogo.setVisible(true);
+                        jogo.setLocationRelativeTo(SelectUser.this);
                     }
                 }
 
@@ -64,7 +66,12 @@ public class SelectUser extends JFrame {
 
         titulo = new JLabel("Select User");
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titulo.setAlignmentY(Component.CENTER_ALIGNMENT);
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        titulo.setVerticalAlignment(SwingConstants.BOTTOM);
 
+        this.setResizable(false);
         this.setVisible(true);
 
         this.add(titulo);

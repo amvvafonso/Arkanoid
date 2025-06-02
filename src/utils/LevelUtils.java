@@ -19,6 +19,7 @@ public class LevelUtils {
             // # = Blocos vermelhos (pontos)
             // % = Blocos cinzentos (parede)
             // X = Blocos amarelos (operacoes)
+            // 'O' - Blocos laranjas (Explosões)
 
             for (int y = 0; y < linhas; y++) {
                 for (int x = 0; x < colunas; x++) {
@@ -26,23 +27,19 @@ public class LevelUtils {
                         randomLevel += " ";
                         continue;
                     }
-                    int value = rand.nextInt(1,40);
-                    if (value < 2){
-                        randomLevel += " ";
+                    int value = rand.nextInt(1,100);
+                    if (value > 0 && value < 78){
+                        randomLevel += "#";
                     }
-                    else if (value > 3 && value < 35){
-                       // randomLevel += "#";
-                        randomLevel += "B";
-                    }
-                    else if (value > 35 && value < 39){
+                    else if (value > 78 && value < 80){
                         randomLevel += "%";
                     }
-                    else if (value == 39){
+                    else if (value > 80 && value < 95){
                         randomLevel += "X";
                     }
-               /*     else if (value == 9 && value < 39){
-                        randomLevel += "B";
-                    }*/
+                    else if (value > 95 && value < 100){
+                        randomLevel += "O";
+                    }
 
                 }
                 randomLevel += "\n";

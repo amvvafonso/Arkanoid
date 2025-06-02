@@ -65,7 +65,7 @@ public class UserController extends JFrame {
         //Criacao da leaderboard
         if (!returnUser().isEmpty()) {
 
-            String[] columnames = {"Nome", "Nº de Aluno", "Pontos" ,"Tempo de jogo (s)"};
+            String[] columnames = {"Nome", "Nº de Aluno", "Pontos" ,"Tempo de jogo (m)"};
 
             leaderBoard = new JTable(FileUtils.to2DArray(returnUser()), columnames){
                 @Override
@@ -331,7 +331,7 @@ public class UserController extends JFrame {
         try {
             String[] users = new String[userArrayList.size()];
             for (int i = 0; i < userArrayList.size(); i++) {
-                users[i] = userArrayList.get(i).get(1);
+                users[i] = userArrayList.get(i).get(0)+ " - " + userArrayList.get(i).get(1);
             }
             return users;
         }

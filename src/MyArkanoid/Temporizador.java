@@ -23,11 +23,11 @@ public class Temporizador extends Thread implements Runnable {
                    interrupt();
                }
                tempo++;
-               Thread.sleep(1000);
+               Thread.sleep(60000);
            }
         }
         catch (InterruptedException e) {
-            System.out.printf("Tempo total - " + tempo);
+
         }
     }
 
@@ -42,7 +42,7 @@ public class Temporizador extends Thread implements Runnable {
                 if(current_time > last_second[0]){
                     ArkanoidGame.Time_display=current_time%60+"";
                     ArkanoidGame.Time_display_minutes=""+(current_time/60);
-                    playGame.Display_time.setText("Play Time: "+ArkanoidGame.Time_display_minutes+" : "+ArkanoidGame.Time_display);
+                    playGame.displayTime.setText("Play Time: "+ArkanoidGame.Time_display_minutes+" : "+ArkanoidGame.Time_display);
                     // System.out.println(Time_display); show in console
                     last_second[0] =current_time;
                 }
