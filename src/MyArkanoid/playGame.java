@@ -6,10 +6,13 @@ import utils.SoundUtils;
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,6 +65,7 @@ public class playGame extends JFrame {
         displayTime = new JTextField();
 
         btSave.setText("  Save  ");
+        btSave.setFocusPainted(false);
         btSave.setIcon(UIManager.getIcon("FileView.fileIcon"));
         btSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +101,8 @@ public class playGame extends JFrame {
                     arkanoidGame1.limitRestarts(restartLimit);
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
+                    ArkanoidGame.running = false;
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -135,7 +141,7 @@ public class playGame extends JFrame {
         });
 
 
-
+        ;
 
         //CONFIGURACAO LAYOUT
 
@@ -180,6 +186,7 @@ public class playGame extends JFrame {
                 .addComponent(arkanoidGame1, GroupLayout.PREFERRED_SIZE, 432, GroupLayout.PREFERRED_SIZE))
 
         );
+
         setResizable(false);
         pack();
     }
@@ -190,7 +197,7 @@ public class playGame extends JFrame {
     public void dispose() {
         temporizador.interrupt();
         jogador.setTimePlayed(jogador.getTimePlayed() + temporizador.getTempo());
-        jogador.setPontos(jogador.getPontos() + arkanoidGame1.Score);
+        jogador.setPontos(jogador.getPontos() + arkanoidGame1.score);
         music.stop();
 
         //Update de stats do user

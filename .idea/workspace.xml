@@ -9,14 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="some bug bixes and some functionallity aditions">
+    <list default="true" id="203eeea9-23f7-4998-8ca0-238f8b06f625" name="Changes" comment="pad moves verticaly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leaderBoard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/puzzle.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/ArkanoidGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/Temporizador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyArkanoid/playGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SoundUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SoundUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tempFile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +138,7 @@
       <workItem from="1748610503486" duration="6739000" />
       <workItem from="1748619303007" duration="24666000" />
       <workItem from="1748699021858" duration="29824000" />
-      <workItem from="1748805305981" duration="20256000" />
+      <workItem from="1748805305981" duration="22978000" />
     </task>
     <task id="LOCAL-00004" summary="bug fixes">
       <option name="closed" value="true" />
@@ -214,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748826216268</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="pad moves verticaly">
+      <option name="closed" value="true" />
+      <created>1748829488531</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748829488531</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +243,7 @@
     <MESSAGE value="added fireball" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="some bug bixes and some functionallity aditions" />
-    <option name="LAST_COMMIT_MESSAGE" value="some bug bixes and some functionallity aditions" />
+    <MESSAGE value="pad moves verticaly" />
+    <option name="LAST_COMMIT_MESSAGE" value="pad moves verticaly" />
   </component>
 </project>
