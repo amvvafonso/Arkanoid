@@ -51,6 +51,9 @@ public class SoundUtils {
 
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
+
+            setVolume(clip, 0.5);
+
             if (clip.isRunning()) {
                 clip.stop();
             }

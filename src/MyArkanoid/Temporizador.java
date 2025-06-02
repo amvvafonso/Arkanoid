@@ -33,10 +33,12 @@ public class Temporizador extends Thread implements Runnable {
 
 
 
-    public static void show_time()  {
+    public static Thread show_time()  {
         long start_time=System.currentTimeMillis();
+        ArkanoidGame.Time_display = new String();
+        ArkanoidGame.Time_display_minutes = new String();
         final long[] last_second = {0};
-        new Thread(() -> {
+        return new Thread(() -> {
             while(true){
                 long current_time=(System.currentTimeMillis()-start_time)/1000;
                 if(current_time > last_second[0]){
@@ -47,8 +49,7 @@ public class Temporizador extends Thread implements Runnable {
                     last_second[0] =current_time;
                 }
             }
-        }).start();
-
+        });
     }
 
     public boolean hasTimePassed(long i){

@@ -54,7 +54,7 @@ public class Ball  extends Animation{
             throw new ArkanoidException("Perdeu o jogo");
         }
         
-        
+        ArkanoidGame.running = true;
         //resaltar
         if( this.x < 0 || this.x + this.width > bounds.width){
             this.vx *= -1;

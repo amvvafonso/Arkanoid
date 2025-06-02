@@ -33,8 +33,8 @@ public class ArkanoidGame extends JComponent
     private Ball ball;
     private ArrayList<Brick> bricks;
     private Paddle pad;
-    public Boolean running;
-    private List<Brick> BricksToRemove = new ArrayList<>();
+    static Boolean running;
+    private List<Brick> bricksRemoved = new ArrayList<>();
     public Timer timer;
     static String Time_display;
     static String Time_display_minutes;
@@ -46,18 +46,25 @@ public class ArkanoidGame extends JComponent
 
     public ArkanoidGame() {
 
-        temporizador = new Temporizador();
-        timer = new Timer(10, this);
-        Temporizador.show_time();
+        try {
+            temporizador = new Temporizador();
+            timer = new Timer(10, this);
+            Temporizador.show_time().interrupt();
+            Temporizador.show_time().start();
 
-        timer.start();
-        backgroundSequence();
+            timer.start();
+            backgroundSequence();
 
-        addMouseMotionListener(this);
+            addMouseMotionListener(this);
 
-        timer.stop();
+            timer.stop();
 
-        running = false;
+            running = false;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            new ArkanoidException("Ocorreu um erro ao iniciar o jogo").showError();
+        }
 
     }
 
@@ -75,7 +82,7 @@ public class ArkanoidGame extends JComponent
         //dimensoes dos blocos
         Score = 0;
         counter = 0;
-        BricksToRemove = new ArrayList<>();
+        bricksRemoved = new ArrayList<>();
 
         int dimX = getWidth() / LevelUtils.colunas;
         int dimY = getHeight() / LevelUtils.linhas;
@@ -105,11 +112,11 @@ public class ArkanoidGame extends JComponent
 
             }
         }
-        this.pad = new Paddle(Color.RED, getWidth()/2, getHeight()-30, 100, 20);
-        this.ball = new Ball(Color.yellow, getWidth()/4,  getHeight()-60, 10);
+        this.pad = new Paddle(Color.RED, getWidth()/2 - 50, getHeight()-30, 100, 20);
+        this.ball = new Ball(Color.yellow, getWidth()/2,  getHeight()-60, 10);
 
         this.ball.vx = 3;
-        this.ball.vy = -3;
+        this.ball.vy = 3;
     }
 
     public void loadGame(String path) throws Exception{
@@ -179,32 +186,30 @@ public class ArkanoidGame extends JComponent
                         }
                         else if (!brick.getMyColor().equals(Color.GRAY)) {
                             if (brick.getMyColor().equals(Color.RED) && fireball && brick.isVisible){
-                                Brick[] lst = new Brick[3];
                                 if (bricks.indexOf(brick) - 1 > 0){
                                     if (!bricks.get(bricks.indexOf(brick) - 1).getMyColor().equals(Color.GRAY)) {
                                         bricks.get(bricks.indexOf(brick) - 1).isVisible = false;
-                                        BricksToRemove.add(bricks.get(bricks.indexOf(brick) - 1));
-                                        lst[0] = bricks.get(bricks.indexOf(brick) - 1);
+                                        bricksRemoved.add(bricks.get(bricks.indexOf(brick) - 1));
                                         Score++;
                                     }
                                 }
                                 if (bricks.indexOf(brick) + 1 < bricks.size()){
                                     if (!bricks.get(bricks.indexOf(brick) + 1).getMyColor().equals(Color.GRAY)) {
                                         bricks.get(bricks.indexOf(brick) + 1).isVisible = false;
-                                        lst[1] = bricks.get(bricks.indexOf(brick) + 1);
-                                        BricksToRemove.add(bricks.get(bricks.indexOf(brick)));
+                                        bricksRemoved.add(bricks.get(bricks.indexOf(brick)));
                                         Score++;
                                     }
                                 }
                                 if (bricks.indexOf(brick) - LevelUtils.linhas >= 0){
                                     if (bricks.get(bricks.indexOf(brick) - LevelUtils.linhas ).getMyColor().equals(Color.GRAY)){
                                         bricks.get(bricks.indexOf(brick) - (LevelUtils.linhas + 1)).isVisible = false;
-                                        lst[2] = bricks.get(bricks.indexOf(brick) - LevelUtils.linhas );
-                                        BricksToRemove.add(bricks.get(bricks.indexOf(brick)));
+                                        bricksRemoved.add(bricks.get(bricks.indexOf(brick)));
                                         Score++;
                                     }
 
                                 }
+
+                                bricksRemoved.add(brick);
 
                                 updateBallMovement(ball, brick);
 
@@ -213,12 +218,12 @@ public class ArkanoidGame extends JComponent
                             }
                             else {
                                 if (brick.getMyColor().equals(Color.YELLOW)) {
-                                    if (ball.width > 5) {
+                                    if (ball.width > 5 && ball.height > 5) {
                                         ball.width -= 5;
                                         ball.height -= 5;
                                         new Thread(() -> {
                                             try {
-                                                Thread.sleep(new Random().nextInt(5000, 20000));
+                                                Thread.sleep(new Random().nextInt(5000, 10000));
                                             } catch (InterruptedException ex) {
                                                 throw new RuntimeException(ex);
                                             }
@@ -232,7 +237,7 @@ public class ArkanoidGame extends JComponent
                                     fireball = true;
                                     new Thread(() -> {
                                         try {
-                                            Thread.sleep(new Random().nextInt(3000, 5000));
+                                            Thread.sleep(new Random().nextInt(3000, 7000));
                                         } catch (InterruptedException ex) {
                                             throw new RuntimeException(ex);
                                         }
@@ -244,7 +249,7 @@ public class ArkanoidGame extends JComponent
                                 updateBallMovement(ball, brick);
 
                                 brick.isVisible = false;
-                                BricksToRemove.add(brick);
+                                bricksRemoved.add(brick);
                                 Score++;
                             }
 
@@ -281,9 +286,9 @@ public class ArkanoidGame extends JComponent
 
     public void checkIfWin(Brick... brick){
         try {
-            System.out.println("Destruidos - " +  BricksToRemove.size() + "\ncontagem total - " + counter);
+            System.out.println("Destruidos - " +  bricksRemoved.size() + "\ncontagem total - " + counter);
             for (Brick b : brick) {
-                if (BricksToRemove.size() >= counter){
+                if (Score >= counter){
                     if (this.isDisplayable()){
                         new ArkanoidException("Ganhou").showMessage();
                         timer.stop();
@@ -302,7 +307,12 @@ public class ArkanoidGame extends JComponent
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        pad.moveTo(e.getX());
+        if (running) {
+            pad.moveTo(e.getX());
+            if (e.getY() > getWidth() / 2 && e.getY() < getHeight() - 50) {
+                pad.y = e.getY();
+            }
+        }
     }
 
     public void stopGame(){
@@ -315,15 +325,9 @@ public class ArkanoidGame extends JComponent
         timer.start();
     }
 
-
     public BufferedImage getImgBack() {
         return imgBack;
     }
-
-    public void setImgBack(BufferedImage imgBack) {
-        this.imgBack = imgBack;
-    }
-
 
     public Ball updateBallMovement(Ball ball, Brick brick){
         try {

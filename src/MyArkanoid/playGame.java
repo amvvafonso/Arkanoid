@@ -18,17 +18,16 @@ public class playGame extends JFrame {
 
 
     private User jogador;
-    Temporizador temporizador;
-    private static int Number_of_restarts=0;
+    private Temporizador temporizador;
+    private int restartLimit;
     public playGame(User user) {
         try {
-
             this.jogador = user;
             initComponents();
             arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
 
-
-    } catch (IOException ex) {
+    }
+        catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,13 +38,16 @@ public class playGame extends JFrame {
     private void initComponents() {
 
         //Music
-
         music = SoundUtils.playSound("music");
         music.loop(500);
+        SoundUtils.setVolume(music, 0.5);
 
+
+        //Iniciação de contagem de tempo de jogo
         temporizador = new Temporizador();
 
-        System.out.println("Selected user was - " + jogador.getUsername());
+
+
         //CONFGURACAO BOTOES
 
         arkanoidGame1 = new ArkanoidGame();
@@ -58,8 +60,6 @@ public class playGame extends JFrame {
         volumeText = new JLabel();
         displayScore = new JTextField();
         displayTime = new JTextField();
-
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         btSave.setText("  Save  ");
         btSave.setIcon(UIManager.getIcon("FileView.fileIcon"));
@@ -93,8 +93,8 @@ public class playGame extends JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
                     btPause.setEnabled(true);
-                    Number_of_restarts++;
-                    arkanoidGame1.limitRestarts(Number_of_restarts);
+                    restartLimit++;
+                    arkanoidGame1.limitRestarts(restartLimit);
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
                 } catch (IOException e) {
@@ -124,24 +124,22 @@ public class playGame extends JFrame {
         displayScore.setDisabledTextColor(Color.BLACK);
 
 
+        volumeText.setText("Volume");
         volume.setMaximumSize(new Dimension(100,50));
-        volume.setValue(0);
+        volume.setValue(50);
         volume.setToolTipText("Volume");
         volume.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                System.out.println(volume.getValue());
-//                SoundUtils.setVolume(music, volume.getValue() * 0.01);
-                SoundUtils.setVolume(music, 0);
+                SoundUtils.setVolume(music, volume.getValue() * 0.01);
             }
         });
 
 
-        volumeText.setText("Volume");
+
 
         //CONFIGURACAO LAYOUT
 
-
-
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         GroupLayout layout = new GroupLayout(getContentPane());
 
         getContentPane().setLayout(layout);
@@ -153,21 +151,14 @@ public class playGame extends JFrame {
                     .addComponent(btLoad)
                         .addComponent(volumeText)
                         .addComponent(volume)
-                        //
                         .addComponent(displayTime)
-                        //
-                        //
                         .addComponent(displayScore)
-                        //
                     .addComponent(btPause)
                         .addComponent(btNewLevel)
                         .addComponent(btRestart))
                 .addGap(18, 18, 18)
                 .addComponent(arkanoidGame1, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
-
-
         );
-        setForeground(Color.DARK_GRAY);
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -177,12 +168,8 @@ public class playGame extends JFrame {
                     .addComponent(volumeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(volume)
                     .addGap(170, 170, 170)
-                    //
                     .addComponent(displayTime)
-                    //
-                    //
                     .addComponent(displayScore)
-                    //
                     .addComponent(btRestart)
                     .addComponent(btPause)
                     .addGap(50, 50, 50)
@@ -194,7 +181,6 @@ public class playGame extends JFrame {
 
         );
         setResizable(false);
-
         pack();
     }
 
@@ -205,8 +191,11 @@ public class playGame extends JFrame {
         temporizador.interrupt();
         jogador.setTimePlayed(jogador.getTimePlayed() + temporizador.getTempo());
         jogador.setPontos(jogador.getPontos() + arkanoidGame1.Score);
-        UserController.updateUser(jogador);
         music.stop();
+
+        //Update de stats do user
+        UserController.updateUser(jogador);
+
         super.dispose();
     }
 
@@ -216,6 +205,7 @@ public class playGame extends JFrame {
 
     private void BtNewLevelPerformed(java.awt.event.ActionEvent evt) {
         try {
+            if (!btPause.isEnabled()) btPause.setEnabled(true);
             arkanoidGame1.continueGame();
             arkanoidGame1.loadLevel(FileUtils.createPuzzle("puzzle.txt"));
 
@@ -280,14 +270,8 @@ public class playGame extends JFrame {
     }
 
 
-      /*  public  String Time_tracker(){
-    Timer timer = new Timer();
-            return timer.toString();
-            timer.start();
-        }*/
 
 
-    // Variables declaration
     private ArkanoidGame arkanoidGame1;
     private JButton btLoad;
     private JButton btSave;
@@ -299,5 +283,5 @@ public class playGame extends JFrame {
     private JLabel volumeText;
     static JTextField displayTime;
     static JTextField displayScore;
-    // End of variables declaration
+
 }
