@@ -132,6 +132,9 @@ public class UserController extends JFrame {
         nome.setPreferredSize(new Dimension(100, 20));
         nome.addFocusListener(new FocusAdapter() {
             public void focusLost(FocusEvent e) {
+                if (user.getUsername().isEmpty()){
+                    nome.setText("Nome");
+                }
 
             }
             public void focusGained(FocusEvent e) {

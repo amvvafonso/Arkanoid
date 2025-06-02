@@ -6,24 +6,21 @@ import utils.SoundUtils;
 
 import javax.sound.sampled.Clip;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class playGame extends JFrame {
+public class gameView extends JFrame {
 
 
     private User jogador;
     private Temporizador temporizador;
     private int restartLimit;
-    public playGame(User user) {
+    public gameView(User user) {
         try {
             this.jogador = user;
             initComponents();
@@ -32,7 +29,7 @@ public class playGame extends JFrame {
     }
         catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
-            Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -53,7 +50,7 @@ public class playGame extends JFrame {
 
         //CONFGURACAO BOTOES
 
-        arkanoidGame1 = new ArkanoidGame();
+        arkanoidGame1 = new arkanoidGame();
         btSave = new JButton();
         btLoad = new JButton();
         btPause = new JButton();
@@ -101,7 +98,7 @@ public class playGame extends JFrame {
                     arkanoidGame1.limitRestarts(restartLimit);
                     arkanoidGame1.loadLevel("puzzle.txt");
                     btPause.setText("Resume");
-                    ArkanoidGame.running = false;
+                    arkanoidGame.running = false;
 
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -237,7 +234,7 @@ public class playGame extends JFrame {
             btNewLevel.setEnabled(true);
         }
         catch (Exception ex) {
-            Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -252,7 +249,7 @@ public class playGame extends JFrame {
                 arkanoidGame1.continueGame();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
-                Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -270,7 +267,7 @@ public class playGame extends JFrame {
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
-                Logger.getLogger(playGame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(gameView.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -279,7 +276,7 @@ public class playGame extends JFrame {
 
 
 
-    private ArkanoidGame arkanoidGame1;
+    private arkanoidGame arkanoidGame1;
     private JButton btLoad;
     private JButton btSave;
     static JButton btPause;

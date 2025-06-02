@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ArkanoidGame extends JComponent
+public class arkanoidGame extends JComponent
         implements ActionListener, MouseMotionListener {
 
 
@@ -43,7 +43,7 @@ public class ArkanoidGame extends JComponent
 
 
 
-    public ArkanoidGame() {
+    public arkanoidGame() {
 
         try {
             temporizador = new Temporizador();
@@ -247,7 +247,7 @@ public class ArkanoidGame extends JComponent
                                 score++;
                             }
 
-                            playGame.displayScore.setText("Score: " + score);
+                            gameView.displayScore.setText("Score: " + score);
                             checkIfWin(brick);
                             SoundUtils.playSound("pop");
                         }

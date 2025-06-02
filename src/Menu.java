@@ -45,7 +45,7 @@ public class Menu extends JFrame {
                         SelectUser selectUser = new SelectUser();
                         selectUser.setLocationRelativeTo(Menu.this);
 
-                        //playGame game = new playGame();
+                        //gameView game = new gameView();
                         SoundUtils.playSound("game-start");
                         //game.setLocationRelativeTo(Menu.this);
                         //game.setVisible(true);

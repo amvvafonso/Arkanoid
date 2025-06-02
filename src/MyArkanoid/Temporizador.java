@@ -35,16 +35,16 @@ public class Temporizador extends Thread implements Runnable {
 
     public static Thread show_time()  {
         long start_time=System.currentTimeMillis();
-        ArkanoidGame.Time_display = new String();
-        ArkanoidGame.Time_display_minutes = new String();
+        arkanoidGame.Time_display = new String();
+        arkanoidGame.Time_display_minutes = new String();
         final long[] last_second = {0};
         return new Thread(() -> {
             while(true){
                 long current_time=(System.currentTimeMillis()-start_time)/1000;
                 if(current_time > last_second[0]){
-                    ArkanoidGame.Time_display=current_time%60+"";
-                    ArkanoidGame.Time_display_minutes=""+(current_time/60);
-                    playGame.displayTime.setText("Play Time: "+ArkanoidGame.Time_display_minutes+" : "+ArkanoidGame.Time_display);
+                    arkanoidGame.Time_display=current_time%60+"";
+                    arkanoidGame.Time_display_minutes=""+(current_time/60);
+                    gameView.displayTime.setText("Play Time: "+ arkanoidGame.Time_display_minutes+" : "+ arkanoidGame.Time_display);
                     // System.out.println(Time_display); show in console
                     last_second[0] =current_time;
                 }

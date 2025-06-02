@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class SelectUser extends JFrame {
 
@@ -54,7 +53,7 @@ public class SelectUser extends JFrame {
                 for (User user : UserController.getAllUsers()){
                     String num = selectUser.getSelectedItem().toString().split(" - ")[1];
                     if (user.getNumAluno().equals(num)) {
-                        playGame jogo = new playGame(user);
+                        gameView jogo = new gameView(user);
                         jogo.setVisible(true);
                         jogo.setLocationRelativeTo(SelectUser.this);
                     }

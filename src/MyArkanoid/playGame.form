@@ -51,7 +51,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="MyArkanoid.ArkanoidGame" name="arkanoidGame1">
+    <Container class="MyArkanoid.arkanoidGame" name="arkanoidGame1">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
