@@ -149,6 +149,9 @@ public class ArkanoidGame extends JComponent
 
     //Carrega o estado de jogo guardado nos ficheiros
     public void loadGame(String path) throws Exception{
+        this.score = 0;
+        this.Time_display = "";
+        this.Time_display_minutes = "";
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
         this.ball = (Ball) in.readObject();
         this.pad = (Paddle) in.readObject();
